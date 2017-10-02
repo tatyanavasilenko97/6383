@@ -1,0 +1,12 @@
+a X
+
+a
+b
+(a b)
+(b a)
+(a b a)
+(((a)))
+(((b)))
+((a) b (d a) a)
+(a f s (a) (a) (d a (a)))
+(a a a a a a a a a a a a a a a a a a a a a a a a )
