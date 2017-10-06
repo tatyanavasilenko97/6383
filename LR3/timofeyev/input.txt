@@ -1,0 +1,39 @@
+>maertsoi< edulcni#
+>maertsf<edulcni#
+"h.kcats"edulcni#
+
+{)ni& maertsi::dts ,ts& >rahc<kcatS::kcats(gnirtSdaer rahc
+{)eurt(elihw    
+;)(teg.ni=c rahc        
+;c nruter)'n\'==c||FOE==c(fi        
+;)c(hsup.ts        
+}    
+}
+
+{)tuo& maertso::dts ,ts& >rahc<kcatS::kcats(gnirtSetirw diov
+;))(pop.ts(tup.tuo))(lluNsi.ts!(elihw    
+;)'n\'(tup.tuo    
+}
+
+{)tuo& maertso::dts,ni& maertsi::dts(corp diov
+;kcats >rahc<kcatS::kcats    
+;ter rahc    
+{od    
+;)ni ,kcats(gnirtSdaer=ter        
+;)tuo ,kcats(gnirtSetirw        
+;)FOE=!ter(elihw}    
+}
+
+
+)(niam tni
+{
+;)"txt.tupni"( tupni maertsfi::dts    
+;)"txt.tuptuo"(tuptuo maertsfo::dts    
+{)tupni!(fi    
+;ldne::dts<<"!òûðêòî åí ëéàô éîíäîõÂ"<<tuoc::dts        
+;1- nruter        
+}    
+;)tuptuo,tupni(corp    
+;0 nruter    
+}
+
