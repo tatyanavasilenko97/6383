@@ -6,7 +6,7 @@ namespace st_modul1
 {
 
 //-------------------------------------
-    typedef int base;
+    typedef char base;
 
     class Stack {
     private:

@@ -1,4 +1,4 @@
-#include "stdio.h"
+#include <cstdio>
 #include <iostream>
 #include <fstream>
 #include "fun.h"
@@ -15,25 +15,16 @@ void read(Stack &s,std::ifstream &in, std::ofstream &out)
 
 {
     char c;
-    while ( (c = in.get()) != '\n')
-     {
-        if (!in){
-            in.close();
-            out.close()
-             ;exit(0);};
+    while ((c = in.get()) != '\n' && c!=EOF )
         s.push(c);
-    }
 }
-
 
 void write(Stack s, std::ofstream &out)
 {
 
     while (!s.isNull())
- {
         out << s.pop2();
 
-    }
     out<<endl;
 }
 
@@ -42,16 +33,15 @@ int main(int argc, char *argv[])
     ofstream fout("output.txt");
     ifstream fin("input.txt") ;
    fin;
+while (!fin.eof())
 
-do {
-
+{
 Stack  s;
 read(s,fin,fout);
 
 write(s, fout);
-
    }
-   while (true);
-
+fin.close();
+fout.close();
   return 0;
 }
