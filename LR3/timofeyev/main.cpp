@@ -11,7 +11,7 @@
 #include<fstream>
 #include"stack.h"
 
-char readString(stack::Stack<char> &st, std::istream &in){
+char readString(Stack<char> &st, std::istream &in){
     while(true){
         char c=in.get();
         if(c==EOF||c=='\n')return c;
@@ -19,13 +19,13 @@ char readString(stack::Stack<char> &st, std::istream &in){
     }
 }
 
-void writeString(stack::Stack<char> &st, std::ostream &out){
+void writeString(Stack<char> &st, std::ostream &out){
     while(!st.isNull())out.put(st.pop());
     out.put('\n');
 }
 
 void proc(std::istream &in,std::ostream &out){
-    stack::Stack<char> stack;
+    Stack<char> stack;
     char ret;
     do{
         ret=readString(stack, in);
