@@ -5,131 +5,69 @@
 //
 #include <iostream>
 #include <cstdlib>
-#include "l_intrfc.h"
+#include "lisp.h"
 #include "list.h"
 using namespace std;
-using namespace h_list;
 
-/*
-struct list {
-
-    base ch;
-    list *tail;
-    list *head;
-};
-typedef list *list_pointer;
-void add(list_pointer &x, char elem)
-{
-    x->ch = elem;
-               x->tail = new list;
-                x->tail->head = x->head;
-               x = x->tail;
+void count(list head, int &k) {
+    if (head != NULL) {
+        count(tail_l(head),k);
+        k++;
+    }
+    else return;
 }
 
-*/
-bool find(list_pointer head, base c);
-
-
-/*
-list_pointer tail_l(list_pointer head)
-{
-    return head->tail;
-}
-void write_l(list_pointer head)
-{
-    if (head->tail != NULL)
-    {
-        cout << head->ch << " ";
-        write_l(tail_l(head));
-}
-
-    else
-         return ;
-
-}
-*/
-void count(list_pointer head, int &k)
-{
-
-    if (head->tail != NULL)
-    {
-
-       count(tail_l(head),k);
-       k++;
-}
-
-    else
-         return ;
-
-}
-
-bool find(list_pointer head, base c) // found true - íàéäåí
-{
-
+bool find(list head, base c){
     if (head != nullptr) {
-        if (head->ch == c) {
-
+        if (head->value == c)
             return true;
-        }
-        else find(tail_l(head), c);
+        else return find(tail_l(head), c);
     }
     else return false;
 }
 
-void make_list( lisp  s1, list_pointer &x);
-void make_list_seq(  lisp   s1, list_pointer &x);
+list make_list(lisp s1);
+void make_list_private( lisp  s1, list &x);
+void make_list_private_seq(  lisp   s1, list &x);
 
-int main()
-{
-
-   lisp  s1;
-
+int main(){
+    lisp  s1;
     int k = 0;
     cout << "Введите list1:" << endl;
     read_lisp(s1);
-//write_lisp(s1);
     cout << endl;
-
-    list_pointer x = new list;
-    list_pointer head = x;
-    x->head = head;
-   // list_pointer head = new list;
-      make_list(s1,x);
-       cout << "flatten  =  ";
-       cout<<"( ";
-     write_l((head));
-     cout<<")"<<endl;
-   count(head, k);
-   cout<<"Количество = ";
- cout << k << endl;
-
+    list head;
+    head = make_list(s1);
+    cout << "flatten  =  ";
+    cout<<"( ";
+    write_l((head));
+    cout<<")"<<endl;
+    count(head, k);
+    cout<<"Количество = ";
+    cout << k << endl;
     return 0;
 }
 
-void make_list ( lisp s1, list_pointer &x)
-{
-if (isNull(s1)) return;
-else if (isAtom(s1)) {
-
-    bool found = false;
-
-    found = find(x->head, s1->node.atom);
-
-        if (found == false)
-
-            add(x,s1->node.atom);
-
-}
-    else  {
-        make_list_seq(s1,x);
-
+void make_list_private ( lisp s1, list &x){
+    if (is_null(s1)) return ;
+    if (is_atom(s1)) {
+        if (!find(x, s1->node.atom))
+        add(x,s1->node.atom);
     }
+    else make_list_private_seq(s1,x);
 }
 //...........................
-void make_list_seq ( lisp s1,list_pointer &x)
-{
-if (!isNull(s1)) {
-    make_list(head (s1),x);
-    make_list_seq(tail (s1),x);
+void make_list_private_seq ( lisp s1,list &x){
+    if (!is_null(s1)) {
+        make_list_private(head (s1),x);
+        make_list_private_seq(tail (s1),x);
+    }
 }
+
+list make_list(lisp s1){
+    list x = nullptr;
+    make_list_private(s1,x);
+    return x;
 }
+
+

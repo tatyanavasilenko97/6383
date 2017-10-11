@@ -2,15 +2,13 @@
 #define LIST
 
 typedef char base;
-struct list {
-
-    base ch;
-    list *tail;
-    list *head;
+struct Node {
+    base value;
+    Node *next;
 };
-typedef list *list_pointer;
-list_pointer tail_l(list_pointer head);
-void write_l(list_pointer head);
-void add(list_pointer &x, char elem);
-#endif // LIST
-
+typedef Node *list;
+list tail_l(list head);
+void write_l(list head);
+void add(list &x, char elem);
+#endif
+// LIST
