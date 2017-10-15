@@ -11,9 +11,9 @@
 #include<fstream>
 #include"stack.h"
 
-char readString(Stack<char> &st, std::istream &in){
+int readString(Stack<char> &st, std::istream &in){
     while(true){
-        char c=in.get();
+        int c=in.get();
         if(c==EOF||c=='\n')return c;
         st.push(c);
     }
