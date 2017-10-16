@@ -44,7 +44,7 @@ int main(){
     cout<<")"<<endl;
     count(head, k);
     cout<<"Количество = ";
-    cout << k << endl;
+     cout << k << endl;
     return 0;
 }
 

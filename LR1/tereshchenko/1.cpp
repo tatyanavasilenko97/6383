@@ -1,4 +1,4 @@
-// Lr ¹1
+// Lr1
 // 1.cpp
 // Tereshchenko Viktoria, group 6383
 // 18.09.17
@@ -73,8 +73,9 @@ bool Brackets(ifstream &f)
 	a = false;
 	if (f >> c) {
 		if ((c == 'B') || (c == '[')) a = Square (f, c);
-		else if ((c == 'A') || (c == '(')) a = Round (f, c);
-		else Error(1); 
+		else 
+			if ((c == 'A') || (c == '(')) a = Round (f, c);
+			else Error(1); 
 	}
 	else Error (0); 
 	return a;
@@ -82,7 +83,7 @@ bool Brackets(ifstream &f)
 
 void Error (short n)
 {
-	cout << "err ¹" << n << endl;
+	cout << "err " << n << endl;
 	switch (n) {
 		case 0: cout << "Empty line" << endl; 
 		break; 
