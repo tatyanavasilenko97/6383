@@ -1,7 +1,7 @@
-#include "b_k.h"
+﻿#include "b_k.h"
 
 
-b_k::b_k()
+Binomial::Binomial()
 {
 	save = (ull **)malloc(sizeof(ull *) );
 	Nmax = 2;
@@ -10,7 +10,8 @@ b_k::b_k()
 	save[0][0] = 2;
 }
 
-b_k::~b_k()
+
+Binomial::~Binomial()
 {
 	for (ui i=0; i < Nmax-1; i++)
 		free(save[i]);
@@ -19,51 +20,71 @@ b_k::~b_k()
 }
 
 
-void b_k::more(ui n)
+void Binomial::more(ui n)
 {
-	//n++;
-
 	save = (ull **)realloc(save, (n-1)*sizeof(ull *) );
+	if (!save)
+	{
+		std::cerr << "Ошибка: память не была выделена\n";
+		system ("pause");
+		exit(1);
+	}
 
 	for (ui i=Nmax-1; i<(n-1); i++)
 	{
-		save[i] = (ull *)calloc(n-1, sizeof(ull) );
+		save[i] = (ull *)calloc(i+1, sizeof(ull) );
 
-		//save[i][0] = save[i][i] = 1;
+		if (!save[i])
+		{
+			std::cerr << "Ошибка: память не была выделена\n";
+			system ("pause");
+			exit(1);
+		}
 	}
 	Nmax = n;
-
-//	std::cout << save<<std::endl;
 }
 
 
-ull b_k::binom(ui m, ui n)
+ull Binomial::binom(ui m, ui n)
 {
-	isOverFlow = true;
-
 	if ( (!m) || (m==n) ) return 1;
-
-
-
 	if ( !save[n-2][m-1] )
 	{
 		save[n-2][m-1]= binom(m-1, n-1);
-		if(!isOverFlow)
+		if(!NotOverFlow)
 			return 1;
 		ull c = binom(m, n-1);
 
-		if ( (ULLONG_MAX - c < save[n-2][m-1]) || (!isOverFlow) )
+		if ( (ULLONG_MAX - c < save[n-2][m-1]) || (!NotOverFlow) )
 		{
-			isOverFlow = false;
+			NotOverFlow = false;
 			save[n-2][m-1] = 1;
 			return 1;
 		}
-		save[n-2][m-1]+= c;
+		save[n-2][m-1] += c;
 		return save[n-2][m-1];
 	}
 	
 	if ( save[n-2][m-1]==1 )
-		isOverFlow = false;
+		NotOverFlow = false;
 
 	return save[n-2][m-1];
+}
+
+
+bool Binomial::colculate(ui &m, ui &n, ull &res)
+{
+	NotOverFlow = true;
+
+	if ( m > n ) 
+	{
+		res = 0;
+		return NotOverFlow;
+	}
+
+	if (n >= Nmax) more(n);
+
+	res = binom(m, n);
+
+	return NotOverFlow;
 }

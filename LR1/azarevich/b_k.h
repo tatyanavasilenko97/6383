@@ -1,20 +1,22 @@
 #include <iostream>
 #include <fstream>
+//#include <stdin.h>
+//данного файла нет в VS2008
 
 typedef unsigned long long ull;
 typedef unsigned int ui;
 
-class b_k
+class Binomial
 {
-private:
-	ull **save;		//хранение выч-ных бин. коэф.
-
 public:
-	bool isOverFlow;//флаг переполнения
-	ui Nmax;		//макc. встретившееся n
+	Binomial();
+	~Binomial();
+	bool colculate(ui &m, ui &n, ull &res);
 
-	b_k();
-	~b_k();
+private:
+	ull **save;		 //хранение выч-ных бин. коэф.
+	bool NotOverFlow;//флаг переполнения
+	ui Nmax;		 //макc. встретившееся n	
 
 	void more(ui n);
 	ull binom(ui m, ui n);

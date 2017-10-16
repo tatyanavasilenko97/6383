@@ -1,0 +1,7 @@
+﻿(a b c (d (e f (h ) g (k l) m) n ) o )
+q
+w
+e
+a
+b
+x

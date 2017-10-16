@@ -1,7 +1,7 @@
 #ifndef LIST_H
 #define LIST_H
 
-#endif // LIST_H
+
 
 #include<iostream>
 
@@ -38,3 +38,5 @@ bool isNull (const lisp s);
 void destroy (lisp s);
 void write_lisp (const lisp x, std::ostream &cout);
 void read_lisp ( lisp& y, std::istream &cin);
+
+#endif // LIST_H
