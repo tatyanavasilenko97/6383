@@ -10,5 +10,7 @@ typedef Node *list;
 list tail_l(list head);
 void write_l(list head);
 void add(list &x, char elem);
+void destroy_list(list x);
+
 #endif
 // LIST

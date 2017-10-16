@@ -19,3 +19,9 @@ void add(list &x, char elem){
     node ->next  = x;
     x = node;
 }
+
+void destroy_list(list x){
+    if(x!=NULL)
+    destroy_list(tail_l(x));
+    delete(x);
+}

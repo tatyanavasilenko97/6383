@@ -28,6 +28,7 @@ bool is_null (const lisp s){
     return s==NULL;
 }
 
+
 lisp tail (const lisp s){
     if (s != NULL) if (!is_atom(s))	return s->node.pair.tl;
     else {
@@ -131,4 +132,13 @@ void write_seq (const lisp x){
 
 
 
-
+void destroy_lisp(lisp s)
+{
+if ( s != NULL) {
+    if (!is_atom(s)) {
+        destroy_lisp(head(s));
+        destroy_lisp(tail(s));
+    }
+     delete s;
+};
+}
