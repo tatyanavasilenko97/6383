@@ -7,38 +7,21 @@ int round(FILE *fp, FILE *f, char a, int i);// -//- круглых скобок
 int figure(FILE *fp, FILE *f, char a, int i);// -//- фигурных скобок
 int znak(FILE *fp, FILE *f, char* a); //Функция для считывания и вывода данных посимвольно
 int main() {
-    char a; int b = 0; int answer; FILE *fp; FILE *f; int i = 0; char br[10000];
-    printf("What do you want to do:\n1.enter data\n2.read data from a file\n");
-    scanf("%d", &answer);
-    while (answer != 1 && answer != 2)
-    {
-        printf("Wrong answer. Try again.\n");
-        scanf("%d", &answer);
-    }
-    if (answer == 1) {  //Считываем данные с клавиатуры и записываем в файл input для дальнейшего использования
-        fp = fopen("D:\\study\\input.txt", "w"); //открыли файл ввода, чтобы переписать туда данные с консоли
+    char a; int b = 0;  FILE *fp; FILE *f; int i = 0; char br[10000];
+    
+      //Считываем данные с клавиатуры и записываем в файл input для дальнейшего использования
+        fp = fopen("/Users/denislubchyk/Documents/studies/lab_1/input.txt", "w"); //открыли файл ввода, чтобы переписать туда данные с консоли
         printf("Enter data:\n");
         scanf("%s", br);
         fputs(br, fp);
         fclose(fp);
-    }
-    if (answer == 2) {
-        fp = fopen("D:\\study\\input.txt", "r");//Если выбрали ввод из файла, надо вывести данные на консоль для наглядности
-        printf("Data from the file: ");
-        do
-        {
-            a = fgetc(fp);
-            printf("%c", a);
-        } while (a != EOF);
-        printf("\n");
-        fclose(fp);
-    }
-    fp = fopen("D:\\study\\input.txt", "r");//открыли файл ввода
+    
+    fp = fopen("/Users/denislubchyk/Documents/studies/lab_1/input.txt", "r");//открыли файл ввода
     if (fp == NULL) {
         fprintf(stderr, "Error: file 'input.txt' is not opened!\n");
         exit(EXIT_FAILURE);
     }
-    f = fopen("D:\\study\\output.txt", "w");//открыли файл вывода
+    f = fopen("/Users/denislubchyk/Documents/studies/lab_1/lab_1/output.txt", "w");//открыли файл вывода
     if (f == NULL) {
         fprintf(stderr, "Error: You can`t create 'output.txt' file!\n");
         exit(EXIT_FAILURE);
@@ -49,7 +32,8 @@ int main() {
         printf("The file is empty");
         fprintf(f, "The file is empty");
         return 0;
-    }                        //Проверка первого символа. Если он не соответствует возможному началу скобок, программа завершает работу, иначе - переходит в функцию для дальнейшей проверки на скобки
+    }
+    //Проверка первого символа. Если он не соответствует возможному началу скобок, программа завершает работу, иначе - переходит в функцию для дальнейшей проверки на скобки
     if (a == '+' || a == '[')
         b = square(fp, f, a, i);
     if (a == '-' || a == '(')
