@@ -4,58 +4,57 @@
 #include "stack.h"
 using namespace std ;
 
-
-    struct Stack::node {//
+struct Stack::node {
     base hd;
     node *tl;
-        // constructor
-        node ()
-            {tl = NULL;
-        }
-    };// end node
+    node (){
+     tl = NULL;
+    }
+};
 
-//-------------------------------------
-    base Stack::top (void)
-    {// PreCondition: not null
-        if (topOfStack == NULL) { cerr << "Error: top(null) \n"; exit(1); }
+base Stack::top (void){
+    if (topOfStack == NULL) {
+        cerr << "Error: top(null) \n";
+        exit(1);
+    }
         else return topOfStack->hd;
-    }
-//-------------------------------------
+}
 
-//-------------------------------------
-    base Stack::pop(void)
-    {// PreCondition: not null
-        if (topOfStack == NULL) { cerr << "Error: pop(null) \n"; exit(1); }
-        else
-        {	node *oldTop = topOfStack;
-            base r = topOfStack->hd;
-            topOfStack = topOfStack->tl;
-           // delete oldTop->hd;
-            delete oldTop;
-            return r;
-        }
+base Stack::pop(void){
+    if (topOfStack == NULL) {
+        cerr << "Error: pop(null) \n";
+        exit(1);
     }
-//-------------------------------------
-    void Stack::push (const base &x)
-    {	node *p;
-        p = topOfStack;
-        topOfStack = new node;
-        if ( topOfStack != NULL)	{
-           // topOfStack->hd = new base;
-            topOfStack->hd = x;
+    else {
+        node *oldTop = topOfStack;
+        base r = topOfStack->hd;
+        topOfStack = topOfStack->tl;
+        delete oldTop;
+        return r;
+    }
+}
 
-            topOfStack->tl = p;
-        }
-        else {cerr << "Memory not enough\n"; exit(1);}
+void Stack::push (const base &x){
+    node *p;
+    p = topOfStack;
+    topOfStack = new node;
+    if (topOfStack != NULL) {
+         topOfStack->hd = x;
+         topOfStack->tl = p;
     }
-//-------------------------------------
-    bool Stack::isNull(void)
-    {	return (topOfStack == NULL) ;
+    else {
+         cerr << "Memory not enough\n";
+         exit(1);
     }
-//-------------------------------------
-   Stack::~Stack (){
-       while ( topOfStack != NULL) {
-           pop();
-       }
+}
+
+bool Stack::isNull(void){
+    return (topOfStack == NULL) ;
+}
+
+Stack::~Stack (){
+    while (topOfStack != NULL) {
+         pop();
+    }
 }
 
