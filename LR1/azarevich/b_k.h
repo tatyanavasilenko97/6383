@@ -1,7 +1,7 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <fstream>
 //#include <stdin.h>
-//данного файла нет в VS2008
+//РґР°РЅРЅРѕРіРѕ С„Р°Р№Р»Р° РЅРµС‚ РІ VS2008
 
 typedef unsigned long long ull;
 typedef unsigned int ui;
@@ -14,9 +14,9 @@ public:
 	bool colculate(ui &m, ui &n, ull &res);
 
 private:
-	ull **save;		 //хранение выч-ных бин. коэф.
-	bool NotOverFlow;//флаг переполнения
-	ui Nmax;		 //макc. встретившееся n	
+	ull **save;		 //С…СЂР°РЅРµРЅРёРµ РІС‹С‡-РЅС‹С… Р±РёРЅ. РєРѕСЌС„.
+	bool NotOverFlow;//С„Р»Р°Рі РїРµСЂРµРїРѕР»РЅРµРЅРёСЏ
+	ui Nmax;		 //РјР°Рєc. РІСЃС‚СЂРµС‚РёРІС€РµРµСЃСЏ n	
 
 	void more(ui n);
 	ull binom(ui m, ui n);
