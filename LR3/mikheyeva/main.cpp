@@ -25,7 +25,6 @@ void write(Stack &s, std::ofstream &out){
 int main(int argc, char *argv[]){
     ofstream fout("output.txt");
     ifstream fin("input.txt") ;
-    fin;
     Stack  s;
     while (!fin.eof()){
         read(s,fin,fout);
