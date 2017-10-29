@@ -44,7 +44,10 @@ int main(){
     cout<<")"<<endl;
     count(head, k);
     cout<<"Количество = ";
-     cout << k << endl;
+    cout << k << endl;
+    destroy_list(head);
+    destroy_lisp(s1);
+
     return 0;
 }
 
