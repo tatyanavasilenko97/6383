@@ -1,4 +1,4 @@
-#pragma once 
+﻿#pragma once 
 namespace st_modul1
 {
 	typedef int base;
@@ -19,6 +19,6 @@ namespace st_modul1
 		base pop2(void);
 		void push(const base &x);
 		bool isNull(void);
-		void destroy(void);
+		~Stack();
 	};
 }
