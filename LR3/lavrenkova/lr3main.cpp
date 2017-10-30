@@ -1,8 +1,9 @@
-#include <iostream>
+Ôªø#include <iostream>
 #include <fstream>
 #include <cstdlib>
 #include <windows.h>
 #include "lr3head.h"
+#include <string>
 
 using namespace std;
 using namespace st_modul1;
@@ -10,29 +11,29 @@ using namespace st_modul1;
 int main() {
 	char a[100];
 	setlocale(0, "Rus");
-	cout << "¬‚Ó‰ ÒÚÓÍË Ò ÔÓÒÚÙËÍÒÌÓÈ Á‡ÔËÒ¸˛ ‚˚‡ÊÂÌËˇ." << endl;
+	cout << "–í–≤–æ–¥ —Å—Ç—Ä–æ–∫–∏ —Å –ø–æ—Å—Ç—Ñ–∏–∫—Å–Ω–æ–π –∑–∞–ø–∏—Å—å—é –≤—ã—Ä–∞–∂–µ–Ω–∏—è." << endl;
 	ifstream fin("postfix.txt");
-	fin >> noskipws; // ‚ÍÎ˛˜ËÚ¸ Ï‡ÌËÔÛÎˇÚÓ
+	fin >> noskipws; // –≤–∫–ª—é—á–∏—Ç—å –º–∞–Ω–∏–ø—É–ª—è—Ç–æ—Ä
 
 	if (!fin)
 	{
-		cout << "‘‡ÈÎ ÓÚÒÛÚÒÚ‚ÛÂÚ!\n";
+		cout << "–§–∞–π–ª –æ—Ç—Å—É—Ç—Å—Ç–≤—É–µ—Ç!\n";
 		system("Pause");
 		return 1;
 	}
 
-	int n1 = 100;
 	int n = 0;
-	while (n < n1 && fin >> a[n]) n++;
-	cout << "ƒÎËÌ‡ ÒÚÓÍË = " << n << endl;
-	for (int i = 0; i < n; i++) cout << a[i];
+	fin.getline(a, 100);
+	n = strlen(a)-1;
+	cout << "–î–ª–∏–Ω–∞ —Å—Ç—Ä–æ–∫–∏ = " << n << endl;
+	cout << a;
 	cout << endl;
-	cout << "¬˚˜ËÒÎËÚ¸!" << endl;
+	cout << "–í—ã—á–∏—Å–ª–∏—Ç—å!" << endl;
 
 	Stack s;
 	for (int i = 0; i < n; i++)
 	{
-		cout << "ÿ‡„_: " << i + 1 << " ÒËÏ‚ÓÎ = " << a[i] << endl; // dem
+		cout << "–®–∞–≥_: " << i + 1 << " —Å–∏–º–≤–æ–ª = " << a[i] << endl; // dem
 		if (a[i] == '+')
 			s.push(s.pop2() + s.pop2());
 		if (a[i] == '-')
@@ -57,12 +58,12 @@ int main() {
 		while ((a[i] >= '0') && (a[i] <= '9'))
 		{
 			s.push(10 * s.pop2() + (a[i++] - '0'));
-			cout << "ÿ‡„_: " << i + 1 << " ÒËÏ‚ÓÎ = " << a[i] << endl;// dem
+			cout << "–®–∞–≥_: " << i + 1 << " —Å–∏–º–≤–æ–ª = " << a[i] << endl;// dem
 		}
 	}
-	cout << "–ÂÁÛÎ¸Ú‡Ú = " << s.pop2() << endl;
+	cout << "–†–µ–∑—É–ª—å—Ç–∞—Ç = " << s.pop2() << endl;
 
-	s.destroy();
+	s.~Stack();
 
 	system("Pause");
 	return 0;
