@@ -1,4 +1,11 @@
-﻿#include <iostream>
+/* Lr2
+main.cpp
+Gomonova Anastasia, group 6383
+Var8
+Обратить иерархический список на всех уровнях вложения; 
+Например, для исходного списка (a (b c) d) результатом обращения будет список (d (с b) a);*/﻿
+
+#include <iostream>
 #include <fstream>
 #include <iomanip>
 #include <cstdlib>
