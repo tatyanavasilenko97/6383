@@ -1,10 +1,10 @@
-#ifndef LIST_H_
+п»ї#ifndef LIST_H_
 #define LIST_H_
 #include <iostream>
 #include <windows.h>
 using namespace std;
 
-typedef char base;	// базовый тип элементов (атомов)
+typedef char base;	// Р±Р°Р·РѕРІС‹Р№ С‚РёРї СЌР»РµРјРµРЅС‚РѕРІ (Р°С‚РѕРјРѕРІ)
 
 struct  s_expr;
 
@@ -32,11 +32,11 @@ bool isNull(const lisp s);
 void destroy(lisp s);
 base getAtom(const lisp s);
 lisp copy_lisp(const lisp x);
-// функции вывода:
-void write_lisp(const lisp x);	// основная
+// С„СѓРЅРєС†РёРё РІС‹РІРѕРґР°:
+void write_lisp(const lisp x);	// РѕСЃРЅРѕРІРЅР°СЏ
 void write_seq(const lisp x);
-// функции ввода:
-void read_lisp(lisp& y);		// основная
+// С„СѓРЅРєС†РёРё РІРІРѕРґР°:
+void read_lisp(lisp& y);		// РѕСЃРЅРѕРІРЅР°СЏ
 void read_s_expr(base prev, lisp& y);
 void read_seq(lisp& y);
 
