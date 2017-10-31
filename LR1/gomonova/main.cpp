@@ -1,4 +1,12 @@
-﻿#include <iostream>
+/* Lr1
+main.cpp
+Gomonova Anastasia, group 6383
+Var15
+Построить синтаксический анализатор для понятия скобки.
+скобки::=А | A ( ряд_скобок )
+ряд_скобок::= скобки | скобки ; ряд_скобок*/
+
+#include <iostream>
 #include <fstream>
 
 using namespace std;
