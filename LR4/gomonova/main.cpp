@@ -27,17 +27,17 @@ struct node {
 	// constructor
 	node() { lt = NULL; rt = NULL; }
 };
-typedef node *binTree; // "представитель" бинарного дерева
+typedef node *binTree;                  // "представитель" бинарного дерева
 binTree enterBT();
 void displayBT(binTree b, int n);
 unInt NumOfLvl(binTree b, int a, int c = 1);
 int getMaxDepth(binTree b, int depth = 1);
 void levelBT(binTree b);
-typedef node *binTree; // "представитель" бинарного дерева
+typedef node *binTree;                  // "представитель" бинарного дерева
 binTree Create(void);
 bool isNull(binTree), RooBT(binTree);
-base RootBT(binTree); // для непустого бин.дерева
-binTree Left(binTree), Right(binTree);// для непустого бин.дерева
+base RootBT(binTree);                   // для непустого бин.дерева
+binTree Left(binTree), Right(binTree);  // для непустого бин.дерева
 binTree ConsBT(const base &x, binTree &lst, binTree &rst);
 void destroy(binTree&);
 ifstream infile("input.txt");
@@ -45,7 +45,7 @@ ifstream infile("input.txt");
 int main()
 {
 	binTree b;
-	SetConsoleCP(1251);			// для вывода кирилицы
+	SetConsoleCP(1251);		// для вывода кирилицы
 	SetConsoleOutputCP(1251);	// для вывода кирилицы
 
 	b = enterBT();
@@ -90,18 +90,18 @@ int getMaxDepth(binTree q, int depth) //висчитываем глубину д
 	if (q == NULL) { return depth; }
 	else return max(getMaxDepth(q->rt, depth + 1), getMaxDepth(q->lt, depth + 1));
 }
-void displayBT(binTree b, int n) // функция для вывода бд на консоль
+void displayBT(binTree b, int n)           // функция для вывода бд на консоль
 {
 	if (b != NULL) {
 		displayBT(Right(b), n + 1);//Прохождение по правым
 		for (int i = n + 1; i > 0; i--)
 			cout << "   ";
-		cout << b->info << endl;//Вывод текущего
+		cout << b->info << endl;  //Вывод текущего
 		displayBT(Left(b), n + 1);//Прохождение по левым
 	}
 }
 
-void levelBT(binTree b) // определение является ли листом
+void levelBT(binTree b)                   // определение является ли листом
 {
 	if (!isNull(b))
 	{
@@ -153,7 +153,7 @@ bool RooBT(binTree b)
 	else return true;
 }
 
-binTree Left(binTree b)		// для непустого бин.дерева
+binTree Left(binTree b)		        // для непустого бин.дерева
 {
 	if (b == NULL) { cerr << "Error: Left(null) \n"; exit(1); }
 	else return b->lt;
