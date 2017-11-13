@@ -1,4 +1,4 @@
-#include "lisp_list.h"
+п»ї#include "lisp_list.h"
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
@@ -215,7 +215,7 @@ void work_lisp(const lisp x, int & n, elem& h, elem& ah)
 {
 	if (isAtom(x))
 	{
-		// Подсчет атомов;
+		// РџРѕРґСЃС‡РµС‚ Р°С‚РѕРјРѕРІ;
 		n++;
 		create_list(x, n, h, ah);
 	}
