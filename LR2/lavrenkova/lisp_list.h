@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <fstream>
 
 using namespace std;
@@ -27,8 +27,8 @@ typedef s_expr *lisp;
 typedef List *elem;
 
 
-// ѕроцедура вывода списка с обрамл¤ющими его скобками - write_lisp,
-//  а без обрамл¤ющих скобок - write_seq
+// РџСЂРѕС†РµРґСѓСЂР° РІС‹РІРѕРґР° СЃРїРёСЃРєР° СЃ РѕР±СЂР°РјР»СЏСЋС‰РёРјРё РµРіРѕ СЃРєРѕР±РєР°РјРё - write_lisp,
+//  Р° Р±РµР· РѕР±СЂР°РјР»СЏСЋС‰РёС… СЃРєРѕР±РѕРє - write_seq
 lisp head(const lisp s);
 bool isAtom(const lisp s);
 bool isNull(const lisp s);

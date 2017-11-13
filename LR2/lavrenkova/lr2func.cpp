@@ -1,4 +1,5 @@
-#include "lisp_list.h"
+﻿#include "lisp_list.h"
+#include "list.cpp"
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
@@ -215,23 +216,26 @@ void work_lisp(const lisp x, int & n, elem& h, elem& ah)
 {
 	if (isAtom(x))
 	{
-		// ������� ������;
+		// Подсчет атомов;
 		n++;
+		// Создание линейного списка;
+		/*if (n == 1)
+		{
+			ah = new List;
+			ah->atom = x->node.atom;
+			h = ah;
+		}
+		else
+		{
+			ah->next = new List;
+			if (n == 2)
+				h = ah;
+			ah = ah->next;
+			ah->atom = x->node.atom;
+		}
+	}*/
 		create_list(x, n, h, ah);
 	}
 	else
 		work_seq(x, n, h, ah);
-}
-
-void output(elem &b, ofstream &outfile)
-{
-	if (b != NULL)
-		while (b != NULL)
-		{
-			outfile << b->atom << " ";
-			cout << b->atom << " ";
-			b = b->next;
-		}
-	else
-		cout << "()" << endl;
 }
