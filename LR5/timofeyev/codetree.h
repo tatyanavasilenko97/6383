@@ -8,9 +8,11 @@
 #ifndef CODETREE
 #define CODETREE
 
+#include<iostream>
+
 namespace code_tree {
-    char* encode(char* in);
-    char* decode(char* in);
+    void encode(std::istream &in, std::ostream &code);
+    void decode(std::istream &in, std::ostream &code);
 }
 
 #endif // CODETREE
