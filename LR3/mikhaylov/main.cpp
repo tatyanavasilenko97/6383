@@ -5,18 +5,20 @@
 #include "St_class.h"
 using namespace std;
 
-void result(ifstream& fin,Stack<int> s) {
+void result(ifstream& fin, Stack<int> s) {
 	char a[100];
 	int n1 = 100;
 	int n = 0;
-	while (n<n1 && fin >> a[n]) n++;
+	while (n < n1 && fin >> a[n]) n++;
 	cout << "Длина строки: " << n << endl;
-	for (int i = 0; i<n; i++) cout << a[i];
+	for (int i = 0; i < n; i++) cout << a[i];
 	cout << endl;
 	cout << "Вычисляем выражение..." << endl;
-	
-	for (int i = n; i >= 0; i--)
+
+	for (int i = n - 1; i >= 0; i--)
 	{
+		if (a[i] == ' ')
+			continue;
 		cout << "шаг: " << i << " символ = " << a[i] << endl;
 		if (a[i] == '+')
 			s.push(s.pop2() + s.pop2());
@@ -26,12 +28,13 @@ void result(ifstream& fin,Stack<int> s) {
 			s.push(s.pop2() / s.pop2());
 		if (a[i] == '*')
 			s.push(s.pop2() * s.pop2());
-		if ((a[i] >= '0') && (a[i] <= '9'))
-			s.push(0);
-		while ((a[i] >= '0') && (a[i] <= '9'))
-		{
-			s.push(10 * s.pop2() + (a[i--] - '0'));
-			cout << "шаг_: " << i << " символ = " << a[i] << endl;
+		if (isdigit(a[i])) {
+			s.push(a[i] - '0');
+			while (isdigit(a[--i]))
+			{
+				cout << "шаг_: " << i << " символ = " << a[i] << endl;
+				s.push(10 * (a[i] - '0') + s.pop2());
+			}
 		}
 	}
 	cout << "Результат =" << s.pop2() << endl;
@@ -47,7 +50,7 @@ int main() {
 	Stack<int> s;
 	result(fin, s);
 
-	s.destroy();
+	s.~Stack();
 	system("pause");
 	return (0);
 }

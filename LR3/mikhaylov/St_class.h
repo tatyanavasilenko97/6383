@@ -71,7 +71,7 @@
 			return (topOfStack == NULL);
 		}
 		
-		void Stack::destroy(void)//
+		Stack::~Stack(void)//
 		{
 			while (topOfStack != NULL) {
 				pop();
