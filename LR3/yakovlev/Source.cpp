@@ -11,16 +11,16 @@ using namespace std;
 
 struct Node {
 
-	int atom;
+	int atom; 
 	Node* nextEl;
 	Node() {
 		this->atom = 0;
 		this->nextEl = NULL;
 	}
-
-
-
+	
 };
+
+
 
 int strToInt(string);
 string intToStr(int);
@@ -29,7 +29,8 @@ void readExp(vector<string>*);
 int culcFunc(Node*, vector<string>, set<string>);
 void writeCulcExp(int result);
 void printMenu();
-
+void push_Number(Node*& varList, string nowEl);
+int pop_Ele(Node*& varList, Node* head);
 
 int main()
 {
@@ -59,12 +60,31 @@ int main()
 	cout << "______________" << endl;
 	cout << "result = " << result;
 	writeCulcExp(result);
-
+	system("pause");
 	return 0;
 
 
 }
 
+void push_Number(Node*& varList, string nowEl) {
+	varList->nextEl = new Node;
+	varList->nextEl->atom = strToInt(nowEl);
+	varList = varList->nextEl;
+	return;
+}
+
+int pop_Ele(Node*& varList, Node* head)
+{
+	int flag = varList->atom;
+	varList = head;
+
+	while (varList->nextEl->nextEl != NULL)
+		varList = varList->nextEl;
+
+	delete varList->nextEl;
+	varList->nextEl = NULL;
+	return flag;
+}
 
 void writeCulcExp(int result) {
 	ofstream cout("output.txt");
@@ -91,53 +111,25 @@ int culcFunc(Node*varList, vector<string>exp, set<string>oper) {
 	for (string nowEl : exp) {
 
 		if (isNumber(nowEl)) {
-			varList->nextEl = new Node;
-			varList->nextEl->atom = strToInt(nowEl);
-			varList = varList->nextEl;
+			push_Number(varList, nowEl);
 			cout << i << ") " << varList->atom << ";" << endl;
 		}
 		else
 			if (oper.count(nowEl)) {
 				switch (nowEl[0]) {
+
 				case '+': {
-					flag = varList->atom;
-
-					varList = head;
-
-					while (varList->nextEl->nextEl != NULL)
-						varList = varList->nextEl;
-
-					delete varList->nextEl;
-					varList->nextEl = NULL;
-
+					flag = pop_Ele(varList, head);
 					varList->atom += flag;
 				}
 						  break;
 				case '-': {
-					flag = varList->atom;
-
-					varList = head;
-
-					while (varList->nextEl->nextEl != NULL)
-						varList = varList->nextEl;
-
-					delete varList->nextEl;
-					varList->nextEl = NULL;
-
+					flag = pop_Ele(varList, head);
 					varList->atom -= flag;
 				}
 						  break;
 				case '*': {
-					flag = varList->atom;
-
-					varList = head;
-
-					while (varList->nextEl->nextEl != NULL)
-						varList = varList->nextEl;
-
-					delete varList->nextEl;
-					varList->nextEl = NULL;
-
+					flag = pop_Ele(varList, head);
 					varList->atom *= flag;
 
 				}
@@ -148,31 +140,12 @@ int culcFunc(Node*varList, vector<string>exp, set<string>oper) {
 						cerr << "You use null at the division.";
 						exit(2);
 					}
-
-					flag = varList->atom;
-
-					varList = head;
-
-					while (varList->nextEl->nextEl != NULL)
-						varList = varList->nextEl;
-
-					delete varList->nextEl;
-					varList->nextEl = NULL;
-
+					flag = pop_Ele(varList, head);
 					varList->atom /= flag;
 				}
 						  break;
 				case '^': {
-					flag = varList->atom;
-
-					varList = head;
-
-					while (varList->nextEl->nextEl != NULL)
-						varList = varList->nextEl;
-
-					delete varList->nextEl;
-					varList->nextEl = NULL;
-
+					flag = pop_Ele(varList, head);
 					varList->atom = pow(varList->atom, flag);
 				}
 						  break;
@@ -226,3 +199,4 @@ void printMenu() {
 	cout << "_____________________________________________" << endl;
 	cout << "intermediate calculations:" << endl;
 }
+
