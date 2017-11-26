@@ -10,19 +10,19 @@ template <typename T>
 class Queue
 {
 private:
-    T *queuePtr;     // указатель на очередь
-    const int size;  // максимальное количество элементов в очереди
-    int begin,       // начало очереди
-        end;         // конец очереди
-    int elemCT;      // счетчик элементов
+    T *queuePtr;     // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕС‡РµСЂРµРґСЊ
+    const int size;  // РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РѕС‡РµСЂРµРґРё
+    int begin,       // РЅР°С‡Р°Р»Рѕ РѕС‡РµСЂРµРґРё
+        end;         // РєРѕРЅРµС† РѕС‡РµСЂРµРґРё
+    int elemCT;      // СЃС‡РµС‚С‡РёРє СЌР»РµРјРµРЅС‚РѕРІ
 public:
-    Queue(int = 10);          // конструктор по умолчанию
-    Queue(const Queue<T> &); // конструктор копирования
-    ~Queue();                // деструктор
-    void enqueue(const T &); // добавить элемент в очередь
-    T dequeue(); // удалить элемент из очереди
-    void printQueue(); // вывод очереди
-    bool isEmpty(); // проверка на пустоту
+    Queue(int = 10);          // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+    Queue(const Queue<T> &); // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+    ~Queue();                // РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+    void enqueue(const T &); // РґРѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РѕС‡РµСЂРµРґСЊ
+    T dequeue(); // СѓРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РёР· РѕС‡РµСЂРµРґРё
+    void printQueue(); // РІС‹РІРѕРґ РѕС‡РµСЂРµРґРё
+    bool isEmpty(); // РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ
 };
 
 template<typename T>
@@ -32,17 +32,17 @@ bool Queue<T>::isEmpty()
         return true;
     return false;
 }
-// конструктор по умолчанию
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 template<typename T>
 Queue<T>::Queue(int sizeQueue) :
-    size(sizeQueue), // инициализация константы
+    size(sizeQueue), // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅСЃС‚Р°РЅС‚С‹
     begin(0), end(0), elemCT(0)
 {
-    // дополнительная позици поможет нам различать конец и начало очереди
+    // РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РїРѕР·РёС†Рё РїРѕРјРѕР¶РµС‚ РЅР°Рј СЂР°Р·Р»РёС‡Р°С‚СЊ РєРѕРЅРµС† Рё РЅР°С‡Р°Р»Рѕ РѕС‡РµСЂРµРґРё
     queuePtr = new T[size + 1];
 }
 
-// конструктор копии
+// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёРё
 template<typename T>
 Queue<T>::Queue(const Queue &otherQueue) :
     size(otherQueue.size) , begin(otherQueue.begin),
@@ -50,17 +50,17 @@ Queue<T>::Queue(const Queue &otherQueue) :
     queuePtr(new T[size + 1])
 {
     for (int ix = 0; ix < size; ix++)
-        queuePtr[ix] = otherQueue.queuePtr[ix]; // копируем очередь
+        queuePtr[ix] = otherQueue.queuePtr[ix]; // РєРѕРїРёСЂСѓРµРј РѕС‡РµСЂРµРґСЊ
 }
 
-// деструктор класса Queue
+// РґРµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Queue
 template<typename T>
 Queue<T>::~Queue()
 {
     delete [] queuePtr;
 }
 
-// функция добавления элемента в очередь
+// С„СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ РѕС‡РµСЂРµРґСЊ
 template<typename T>
 void Queue<T>::enqueue(const T &newElem)
 {
@@ -71,7 +71,7 @@ void Queue<T>::enqueue(const T &newElem)
         end -= size + 1;
 }
 
-// функция удаления элемента из очереди
+// С„СѓРЅРєС†РёСЏ СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РёР· РѕС‡РµСЂРµРґРё
 template<typename T>
 T Queue<T>::dequeue()
 {
@@ -86,9 +86,9 @@ T Queue<T>::dequeue()
 template<typename T>
 void Queue<T>::printQueue()
 {
-    cout << "Очередь:";
+    cout << "РћС‡РµСЂРµРґСЊ:";
     if (end == 0 && begin == 0)
-        cout << " пустая\n";
+        cout << " РїСѓСЃС‚Р°СЏ\n";
     else
     {
         for (int ix = begin; ix < end; ix++)
