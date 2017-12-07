@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <fstream>
 #include <map>
 #include <conio.h>
@@ -9,37 +9,37 @@
 using namespace std;
 using namespace proc;
 
-HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE); //Консольный хук
+HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE); //РљРѕРЅСЃРѕР»СЊРЅС‹Р№ С…СѓРє
 COORD CursorPosition;
 
-void gotoXY(int, int); //Перемещения по консоли
+void gotoXY(int, int); //РџРµСЂРµРјРµС‰РµРЅРёСЏ РїРѕ РєРѕРЅСЃРѕР»Рё
 
 void main() {
-	setlocale(LC_ALL, "Russian");//Русские символы в консоле
+	setlocale(LC_ALL, "Russian");//Р СѓСЃСЃРєРёРµ СЃРёРјРІРѕР»С‹ РІ РєРѕРЅСЃРѕР»Рµ
 
 	string str;
 	My lets;
 	ifstream in("input.txt");
 	if (!in.is_open()) {
-		cout << "Файл input.txt не найден!" << endl;
+		cout << "Р¤Р°Р№Р» input.txt РЅРµ РЅР°Р№РґРµРЅ!" << endl;
 		system("pause");
 		return;
 	}
 
 	char buff[1024] = { 0 };
 
-	//Считывание файла в одну строку (переносы строк заменяются символом "_")
+	//РЎС‡РёС‚С‹РІР°РЅРёРµ С„Р°Р№Р»Р° РІ РѕРґРЅСѓ СЃС‚СЂРѕРєСѓ (РїРµСЂРµРЅРѕСЃС‹ СЃС‚СЂРѕРє Р·Р°РјРµРЅСЏСЋС‚СЃСЏ СЃРёРјРІРѕР»РѕРј "_")
 	while (!in.eof()) {
 		in.getline(buff, 1024);
 		buff[(sizeof(buff) / sizeof(buff[0])) - 1] = NULL;
 		str += buff;
 		str += '_';
 	}
-	str.pop_back();//Удаление последнего символа
+	str.pop_back();//РЈРґР°Р»РµРЅРёРµ РїРѕСЃР»РµРґРЅРµРіРѕ СЃРёРјРІРѕР»Р°
 	in.close();
 
 	if (str.length() == 0) {
-		cout << "Исходный файл пуст!" << endl;
+		cout << "РСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р» РїСѓСЃС‚!" << endl;
 		getchar();
 		return;
 	}
@@ -54,15 +54,15 @@ start:
 
 	while (running)
 	{
-		gotoXY(12, 7);  cout << "• Метод Хаффмана (вывод алгоритма кодирования/декодирования)";
-		gotoXY(12, 8);  cout << "  [Исходный файл - input.txt, результирующий - hman.txt]";
-		gotoXY(12, 9);  cout << "• Метод Шеннона-фано (вывод алгоритма кодирования/декодирования)";
-		gotoXY(12, 10);  cout << "  [Исходный файл - input.txt, результирующий - fano.txt]";
-		gotoXY(12, 11);  cout << "• Выход";
+		gotoXY(12, 7);  cout << "вЂў РњРµС‚РѕРґ РҐР°С„С„РјР°РЅР° (РІС‹РІРѕРґ Р°Р»РіРѕСЂРёС‚РјР° РєРѕРґРёСЂРѕРІР°РЅРёСЏ/РґРµРєРѕРґРёСЂРѕРІР°РЅРёСЏ)";
+		gotoXY(12, 8);  cout << "  [РСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р» - input.txt, СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РёР№ - hman.txt]";
+		gotoXY(12, 9);  cout << "вЂў РњРµС‚РѕРґ РЁРµРЅРЅРѕРЅР°-С„Р°РЅРѕ (РІС‹РІРѕРґ Р°Р»РіРѕСЂРёС‚РјР° РєРѕРґРёСЂРѕРІР°РЅРёСЏ/РґРµРєРѕРґРёСЂРѕРІР°РЅРёСЏ)";
+		gotoXY(12, 10);  cout << "  [РСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р» - input.txt, СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РёР№ - fano.txt]";
+		gotoXY(12, 11);  cout << "вЂў Р’С‹С…РѕРґ";
 
 		system("pause>nul"); // the >nul bit causes it the print no message
 
-		if (GetAsyncKeyState(VK_DOWN) && x < 11) //нажата кнопка "Верх"
+		if (GetAsyncKeyState(VK_DOWN) && x < 11) //РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° "Р’РµСЂС…"
 		{
 			gotoXY(10, x); cout << "  ";
 			x += 2;
@@ -72,7 +72,7 @@ start:
 
 		}
 
-		if (GetAsyncKeyState(VK_UP) && x > 7) //нажата кнопка "Вниз"
+		if (GetAsyncKeyState(VK_UP) && x > 7) //РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° "Р’РЅРёР·"
 		{
 			gotoXY(10, x); cout << "  ";
 			x -= 2;
@@ -81,7 +81,7 @@ start:
 			continue;
 		}
 
-		if (GetAsyncKeyState(VK_RETURN)) { //нажата кнопка "Enter"
+		if (GetAsyncKeyState(VK_RETURN)) { //РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° "Enter"
 			system("cls");
 			switch (menu_item) {
 			case 0: {
@@ -97,7 +97,7 @@ start:
 			}
 
 			case 2: {
-				cout << "Вы завершили работу программы." << endl;
+				cout << "Р’С‹ Р·Р°РІРµСЂС€РёР»Рё СЂР°Р±РѕС‚Сѓ РїСЂРѕРіСЂР°РјРјС‹." << endl;
 				running = false;
 				getchar();
 				return;

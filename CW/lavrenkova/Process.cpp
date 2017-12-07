@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <fstream>
 #include <map>
 #include <conio.h>
@@ -41,9 +41,9 @@ namespace proc {
 
 		string result = "";
 
-		cout << "                               [Метод Хаффмана]                               " << endl << endl;
-		cout << "Введено сообщение: " << char(34) << my_str << char(34) << "\nРазмером: " << my_str.length() * 8 << " бит";
-		fout << "Введено сообщение: " << char(34) << my_str << char(34) << "\nРазмером: " << my_str.length() * 8 << " бит";
+		cout << "                               [РњРµС‚РѕРґ РҐР°С„С„РјР°РЅР°]                               " << endl << endl;
+		cout << "Р’РІРµРґРµРЅРѕ СЃРѕРѕР±С‰РµРЅРёРµ: " << char(34) << my_str << char(34) << "\nР Р°Р·РјРµСЂРѕРј: " << my_str.length() * 8 << " Р±РёС‚";
+		fout << "Р’РІРµРґРµРЅРѕ СЃРѕРѕР±С‰РµРЅРёРµ: " << char(34) << my_str << char(34) << "\nР Р°Р·РјРµСЂРѕРј: " << my_str.length() * 8 << " Р±РёС‚";
 
 		int* priority = new int[64];
 		string* symbol = new string[64];
@@ -52,8 +52,8 @@ namespace proc {
 			symbol[i].clear();
 		}
 
-		map<string, string> table; // ассоциативный массив связывающий символ и его код
-		map<char, int> dictionary; //ассоциативный массив связывающий символ и его количество вхождений
+		map<string, string> table; // Р°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Р№ РјР°СЃСЃРёРІ СЃРІСЏР·С‹РІР°СЋС‰РёР№ СЃРёРјРІРѕР» Рё РµРіРѕ РєРѕРґ
+		map<char, int> dictionary; //Р°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Р№ РјР°СЃСЃРёРІ СЃРІСЏР·С‹РІР°СЋС‰РёР№ СЃРёРјРІРѕР» Рё РµРіРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РІС…РѕР¶РґРµРЅРёР№
 
 								   //b_node<node> * tree;
 		priority_queue<b_node<node>*>* queue;
@@ -67,64 +67,64 @@ namespace proc {
 			dictionary[tmp]++;
 		}
 
-		if (dictionary.size() == 1) {//обрабатываем, если в файле используется одна буква
-			fout << "\n\nТаблица кодов:" << endl;
-			cout << "\n\nТаблица кодов:" << endl;
+		if (dictionary.size() == 1) {//РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј, РµСЃР»Рё РІ С„Р°Р№Р»Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РѕРґРЅР° Р±СѓРєРІР°
+			fout << "\n\nРўР°Р±Р»РёС†Р° РєРѕРґРѕРІ:" << endl;
+			cout << "\n\nРўР°Р±Р»РёС†Р° РєРѕРґРѕРІ:" << endl;
 			result = One_Letter(my_str, dictionary, fout);
-			fout << "\n\nЗакодированное сообщение: " << result << "\nРазмером: " << result.length() << " бит" << endl;
-			cout << "\n\nЗакодированное сообщение: " << result << "\nРазмером: " << result.length() << " бит" << endl; //вывод закодированного сообщения
+			fout << "\n\nР—Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << result << "\nР Р°Р·РјРµСЂРѕРј: " << result.length() << " Р±РёС‚" << endl;
+			cout << "\n\nР—Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << result << "\nР Р°Р·РјРµСЂРѕРј: " << result.length() << " Р±РёС‚" << endl; //РІС‹РІРѕРґ Р·Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
 			for (unsigned i = 0; i < 80; i++)
 				cout << "-";
-			fout << "Декодированное сообщение: " << my_str << endl;
-			cout << "Декодированное сообщение: " << my_str << endl;
+			fout << "Р”РµРєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << my_str << endl;
+			cout << "Р”РµРєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << my_str << endl;
 		}
 		else {
-			fout << "\n\nСортируем символы по убыванию приоритета:" << endl;
-			cout << "\n\nСортируем символы по убыванию приоритета:" << endl;
-			for (map<char, int>::iterator it = dictionary.begin(); it != dictionary.end(); ++it) { //пробегаемся по ассоц.массиву и добавляем элементы в приорит.очередь
+			fout << "\n\nРЎРѕСЂС‚РёСЂСѓРµРј СЃРёРјРІРѕР»С‹ РїРѕ СѓР±С‹РІР°РЅРёСЋ РїСЂРёРѕСЂРёС‚РµС‚Р°:" << endl;
+			cout << "\n\nРЎРѕСЂС‚РёСЂСѓРµРј СЃРёРјРІРѕР»С‹ РїРѕ СѓР±С‹РІР°РЅРёСЋ РїСЂРёРѕСЂРёС‚РµС‚Р°:" << endl;
+			for (map<char, int>::iterator it = dictionary.begin(); it != dictionary.end(); ++it) { //РїСЂРѕР±РµРіР°РµРјСЃСЏ РїРѕ Р°СЃСЃРѕС†.РјР°СЃСЃРёРІСѓ Рё РґРѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚С‹ РІ РїСЂРёРѕСЂРёС‚.РѕС‡РµСЂРµРґСЊ
 				b_node<node>* tmp = new b_node<node>();
 				tmp->data.symbol = it->first;
 				tmp->data.priority = it->second;
 				queue->push(tmp, it->second);
 			}
 
-			//выполняем пока не останется один элемент в очереди
-			while ((queue->get_top()) != 0) { //создание дерева Хаффмана
+			//РІС‹РїРѕР»РЅСЏРµРј РїРѕРєР° РЅРµ РѕСЃС‚Р°РЅРµС‚СЃСЏ РѕРґРёРЅ СЌР»РµРјРµРЅС‚ РІ РѕС‡РµСЂРµРґРё
+			while ((queue->get_top()) != 0) { //СЃРѕР·РґР°РЅРёРµ РґРµСЂРµРІР° РҐР°С„С„РјР°РЅР°
 				fout << "\n";
 				cout << "\n";
-				bt1 = queue->pop<b_node<node>*>(p1); //делаем pop последнего
-				bt2 = queue->pop<b_node<node>*>(p2); //и предпоследнего элементов
+				bt1 = queue->pop<b_node<node>*>(p1); //РґРµР»Р°РµРј pop РїРѕСЃР»РµРґРЅРµРіРѕ
+				bt2 = queue->pop<b_node<node>*>(p2); //Рё РїСЂРµРґРїРѕСЃР»РµРґРЅРµРіРѕ СЌР»РµРјРµРЅС‚РѕРІ
 
-				ht = cons_bt<node>(bt1, bt2, node()); //присоединяем два предыдущих элемента к пустому узлу
-				ht->data.priority = ht->l_br->data.priority + ht->r_br->data.priority; //задаем общий приоритет отца
-				ht->data.symbol = ht->l_br->data.symbol + ht->r_br->data.symbol; //общую строку для отца
-				queue->push<b_node<node>*>(ht, p1 + p2); //добавляем полученное дерево в приор. очередь
-				fout << "Текущие элементы: ";
-				cout << "Текущие элементы: ";
+				ht = cons_bt<node>(bt1, bt2, node()); //РїСЂРёСЃРѕРµРґРёРЅСЏРµРј РґРІР° РїСЂРµРґС‹РґСѓС‰РёС… СЌР»РµРјРµРЅС‚Р° Рє РїСѓСЃС‚РѕРјСѓ СѓР·Р»Сѓ
+				ht->data.priority = ht->l_br->data.priority + ht->r_br->data.priority; //Р·Р°РґР°РµРј РѕР±С‰РёР№ РїСЂРёРѕСЂРёС‚РµС‚ РѕС‚С†Р°
+				ht->data.symbol = ht->l_br->data.symbol + ht->r_br->data.symbol; //РѕР±С‰СѓСЋ СЃС‚СЂРѕРєСѓ РґР»СЏ РѕС‚С†Р°
+				queue->push<b_node<node>*>(ht, p1 + p2); //РґРѕР±Р°РІР»СЏРµРј РїРѕР»СѓС‡РµРЅРЅРѕРµ РґРµСЂРµРІРѕ РІ РїСЂРёРѕСЂ. РѕС‡РµСЂРµРґСЊ
+				fout << "РўРµРєСѓС‰РёРµ СЌР»РµРјРµРЅС‚С‹: ";
+				cout << "РўРµРєСѓС‰РёРµ СЌР»РµРјРµРЅС‚С‹: ";
 				for (int i = 0; i <= queue->top; i++) {
 					fout << "'" << queue->head[i].data->data.symbol << "'(" << queue->head[i].data->data.priority << ") ";
 					cout << "'" << queue->head[i].data->data.symbol << "'(" << queue->head[i].data->data.priority << ") ";
 				}
 				cout << endl;
 				fout << endl;
-				print(ht, 0, fout); //вывод дерева Хаффмана
+				print(ht, 0, fout); //РІС‹РІРѕРґ РґРµСЂРµРІР° РҐР°С„С„РјР°РЅР°
 			}
 
-			fout << "\n\nТаблица кодов:" << endl;
-			cout << "\n\nТаблица кодов:" << endl;
-			BuildTable(ht, table, fout); //построение и вывод кодов символов
+			fout << "\n\nРўР°Р±Р»РёС†Р° РєРѕРґРѕРІ:" << endl;
+			cout << "\n\nРўР°Р±Р»РёС†Р° РєРѕРґРѕРІ:" << endl;
+			BuildTable(ht, table, fout); //РїРѕСЃС‚СЂРѕРµРЅРёРµ Рё РІС‹РІРѕРґ РєРѕРґРѕРІ СЃРёРјРІРѕР»РѕРІ
 			result = Final_Code(my_str, table);
-			fout << "\nЗакодированное сообщение: " << result << "\nРазмером: " << result.length() << " бит" << endl;
-			cout << "\nЗакодированное сообщение: " << result << "\nРазмером: " << result.length() << " бит" << endl; //вывод закодированного сообщения
+			fout << "\nР—Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << result << "\nР Р°Р·РјРµСЂРѕРј: " << result.length() << " Р±РёС‚" << endl;
+			cout << "\nР—Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << result << "\nР Р°Р·РјРµСЂРѕРј: " << result.length() << " Р±РёС‚" << endl; //РІС‹РІРѕРґ Р·Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
 			for (unsigned i = 0; i < 80; i++)
 				cout << "-";
 			string decoded = hman_decode(ht, result);
-			cout << "Декодированное сообщение: " << decoded << endl; //Вывод декодированного сообщения
+			cout << "Р”РµРєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << decoded << endl; //Р’С‹РІРѕРґ РґРµРєРѕРґРёСЂРѕРІР°РЅРЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
 			for (unsigned i = 0; i < decoded.length(); i++) {
 				if (decoded[i] == char(95))
 					decoded[i] = char(13);
 			}
-			fout << endl << "Декодированное сообщение: " << decoded << endl;
+			fout << endl << "Р”РµРєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << decoded << endl;
 		}
 
 		fout << "==============================================================" << endl;
@@ -135,7 +135,7 @@ namespace proc {
 		fout.close();
 
 		if (open)
-			cout << "\nЛог действий успешно записан в файл hman.txt" << endl;
+			cout << "\nР›РѕРі РґРµР№СЃС‚РІРёР№ СѓСЃРїРµС€РЅРѕ Р·Р°РїРёСЃР°РЅ РІ С„Р°Р№Р» hman.txt" << endl;
 	}
 
 
@@ -155,15 +155,15 @@ namespace proc {
 			symbol[i].clear();
 		}
 
-		map<string, string> table; // ассоциативный массив связывающий символ и его код 
-		map<char, int> dictionary; //ассоциативный массив связывающий символ и его количество вхождений
+		map<string, string> table; // Р°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Р№ РјР°СЃСЃРёРІ СЃРІСЏР·С‹РІР°СЋС‰РёР№ СЃРёРјРІРѕР» Рё РµРіРѕ РєРѕРґ 
+		map<char, int> dictionary; //Р°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Р№ РјР°СЃСЃРёРІ СЃРІСЏР·С‹РІР°СЋС‰РёР№ СЃРёРјРІРѕР» Рё РµРіРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РІС…РѕР¶РґРµРЅРёР№
 
-		fout << "[Метод Шеннона-Фано]" << endl;
-		cout << "                              [Метод Шеннона-Фано]                              " << endl;
-		fout << "Введено сообщение: " << char(34) << my_str << char(34) << "\nРазмером: " << my_str.length() * 8 << " бит";
-		cout << "Введено сообщение: " << char(34) << my_str << char(34) << "\nРазмером: " << my_str.length() * 8 << " бит";
+		fout << "[РњРµС‚РѕРґ РЁРµРЅРЅРѕРЅР°-Р¤Р°РЅРѕ]" << endl;
+		cout << "                              [РњРµС‚РѕРґ РЁРµРЅРЅРѕРЅР°-Р¤Р°РЅРѕ]                              " << endl;
+		fout << "Р’РІРµРґРµРЅРѕ СЃРѕРѕР±С‰РµРЅРёРµ: " << char(34) << my_str << char(34) << "\nР Р°Р·РјРµСЂРѕРј: " << my_str.length() * 8 << " Р±РёС‚";
+		cout << "Р’РІРµРґРµРЅРѕ СЃРѕРѕР±С‰РµРЅРёРµ: " << char(34) << my_str << char(34) << "\nР Р°Р·РјРµСЂРѕРј: " << my_str.length() * 8 << " Р±РёС‚";
 
-		//Open_Map_Shen(file, priority, symbol, dictionary); //чтение из файла и запись в массивы
+		//Open_Map_Shen(file, priority, symbol, dictionary); //С‡С‚РµРЅРёРµ РёР· С„Р°Р№Р»Р° Рё Р·Р°РїРёСЃСЊ РІ РјР°СЃСЃРёРІС‹
 		for (unsigned int i = 0; i < my_str.length(); i++) {
 			char tmp = my_str[i];
 			dictionary[tmp]++;
@@ -177,21 +177,21 @@ namespace proc {
 
 
 		if (dictionary.size() == 1) {
-			fout << "\n\nТаблица кодов:" << endl;
-			cout << "\n\nТаблица кодов:" << endl;
+			fout << "\n\nРўР°Р±Р»РёС†Р° РєРѕРґРѕРІ:" << endl;
+			cout << "\n\nРўР°Р±Р»РёС†Р° РєРѕРґРѕРІ:" << endl;
 			result = One_Letter(my_str, dictionary, fout);
-			fout << "\n\nЗакодированное сообщение: " << result << "\nРазмером: " << result.length() << " бит" << endl;
-			cout << "\n\nЗакодированное сообщение: " << result << "\nРазмером: " << result.length() << " бит" << endl;
+			fout << "\n\nР—Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << result << "\nР Р°Р·РјРµСЂРѕРј: " << result.length() << " Р±РёС‚" << endl;
+			cout << "\n\nР—Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << result << "\nР Р°Р·РјРµСЂРѕРј: " << result.length() << " Р±РёС‚" << endl;
 			for (unsigned i = 0; i < 80; i++)
 				cout << "-";
-			fout << endl << "Декодированное сообщение: " << my_str << endl;
-			cout << "Декодированное сообщение: " << my_str << endl;
+			fout << endl << "Р”РµРєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << my_str << endl;
+			cout << "Р”РµРєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << my_str << endl;
 		}
 		else {
-			Sort_Symb_Prior(symbol, priority, dictionary); //сортировка массивов: символы и приоритеты
+			Sort_Symb_Prior(symbol, priority, dictionary); //СЃРѕСЂС‚РёСЂРѕРІРєР° РјР°СЃСЃРёРІРѕРІ: СЃРёРјРІРѕР»С‹ Рё РїСЂРёРѕСЂРёС‚РµС‚С‹
 
-			cout << "\n\nСортируем символы по убыванию приоритета:" << endl;
-			fout << "\n\nСортируем символы по убыванию приоритета:" << endl;
+			cout << "\n\nРЎРѕСЂС‚РёСЂСѓРµРј СЃРёРјРІРѕР»С‹ РїРѕ СѓР±С‹РІР°РЅРёСЋ РїСЂРёРѕСЂРёС‚РµС‚Р°:" << endl;
+			fout << "\n\nРЎРѕСЂС‚РёСЂСѓРµРј СЃРёРјРІРѕР»С‹ РїРѕ СѓР±С‹РІР°РЅРёСЋ РїСЂРёРѕСЂРёС‚РµС‚Р°:" << endl;
 			for (unsigned int i = 0; i < dictionary.size(); i++) {
 				fout << "'" << symbol[i] << "'(" << priority[i] << ")";
 				cout << "'" << symbol[i] << "'(" << priority[i] << ")";
@@ -203,29 +203,29 @@ namespace proc {
 
 			b_node < f_node > * root = make_root(f_node(0, dictionary.size()));
 
-			Fano_Shennon(0, dictionary.size() - 1, root, priority, symbol, dictionary, true); //построение дерева
+			Fano_Shennon(0, dictionary.size() - 1, root, priority, symbol, dictionary, true); //РїРѕСЃС‚СЂРѕРµРЅРёРµ РґРµСЂРµРІР°
 			f_node * mas;
 			mas = new f_node[100];
 
-			fout << "\n\nПостроение дерева Фано-Шеннона:" << endl;
-			cout << "\n\nПостроение дерева Фано-Шеннона:" << endl;
+			fout << "\n\nРџРѕСЃС‚СЂРѕРµРЅРёРµ РґРµСЂРµРІР° Р¤Р°РЅРѕ-РЁРµРЅРЅРѕРЅР°:" << endl;
+			cout << "\n\nРџРѕСЃС‚СЂРѕРµРЅРёРµ РґРµСЂРµРІР° Р¤Р°РЅРѕ-РЁРµРЅРЅРѕРЅР°:" << endl;
 			print2(root, mas, priority, symbol, 0, fout);
 
-			fout << "\n\nТаблица кодов для каждого символа:" << endl;
-			cout << "\n\nТаблица кодов для каждого символа:" << endl;
+			fout << "\n\nРўР°Р±Р»РёС†Р° РєРѕРґРѕРІ РґР»СЏ РєР°Р¶РґРѕРіРѕ СЃРёРјРІРѕР»Р°:" << endl;
+			cout << "\n\nРўР°Р±Р»РёС†Р° РєРѕРґРѕРІ РґР»СЏ РєР°Р¶РґРѕРіРѕ СЃРёРјРІРѕР»Р°:" << endl;
 			BuildTable2(root, table, fout);
 			result = Final_Code(my_str, table);
-			fout << "Закодированное сообщение: " << result << "\nРазмером: " << result.length() << " бит" << endl;
-			cout << "Закодированное сообщение: " << result << "\nРазмером: " << result.length() << " бит" << endl;
+			fout << "Р—Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << result << "\nР Р°Р·РјРµСЂРѕРј: " << result.length() << " Р±РёС‚" << endl;
+			cout << "Р—Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << result << "\nР Р°Р·РјРµСЂРѕРј: " << result.length() << " Р±РёС‚" << endl;
 			for (unsigned i = 0; i < 80; i++)
 				cout << "-";
 			string decoded = fano_decode(root, result);
-			cout << "Декодированное сообщение: " << decoded << endl; //Вывод декодированного сообщения
+			cout << "Р”РµРєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << decoded << endl; //Р’С‹РІРѕРґ РґРµРєРѕРґРёСЂРѕРІР°РЅРЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
 			for (unsigned i = 0; i < decoded.length(); i++) {
 				if (decoded[i] == char(95))
 					decoded[i] = char(13);
 			}
-			fout << endl << "Декодированное сообщение: " << decoded << endl;
+			fout << endl << "Р”РµРєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ: " << decoded << endl;
 		}
 
 		fout << "==============================================================" << endl;
@@ -236,7 +236,7 @@ namespace proc {
 		fout.close();
 
 		if (open)
-			cout << "\nЛог действий успешно записан в файл fano.txt" << endl;
+			cout << "\nР›РѕРі РґРµР№СЃС‚РІРёР№ СѓСЃРїРµС€РЅРѕ Р·Р°РїРёСЃР°РЅ РІ С„Р°Р№Р» fano.txt" << endl;
 	}
 
 	void My::print(b_node<node> * root, unsigned k, ofstream &fout) {
@@ -350,7 +350,7 @@ namespace proc {
 				schet1 = schet1 + p[i];
 			}
 			if (build)
-				cout << "Cумма=" << schet1 << endl;
+				cout << "CСѓРјРјР°=" << schet1 << endl;
 
 			int d = schet1 / 2;
 
@@ -384,7 +384,7 @@ namespace proc {
 			f_node rn;
 			int n = Share_to_Intervals(left, right, prior, build);
 			if (build)
-				cout << "Точка разбиения: " << n << endl;
+				cout << "РўРѕС‡РєР° СЂР°Р·Р±РёРµРЅРёСЏ: " << n << endl;
 
 			int p = 0;
 			int p1 = 0;
@@ -452,7 +452,7 @@ namespace proc {
 
 	string My::Final_Code(string str, map<string, string> &table) {
 		string result;
-		//cout << "Закодированное сообщение:" << endl;
+		//cout << "Р—Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ:" << endl;
 
 		for (unsigned int i = 0; i < str.length(); i++) {
 			string tmp;
@@ -472,7 +472,7 @@ namespace proc {
 		cout << "'" << dictionary.begin()->first << "' = 1";
 		char tmp = str[0];
 
-		//cout << "\nЗакодированное сообщение:" << endl;
+		//cout << "\nР—Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ:" << endl;
 		for (int i = 0; i < dictionary[tmp]; i++)
 			result += "1";
 		//cout << "1";
@@ -492,17 +492,17 @@ namespace proc {
 				if (curr[curr.length() - 1] == '0') {
 					p = p->l_br;
 					if (encoded_str.length() < 160)
-						cout << "Идём влево, текущий код: " << curr << endl;
+						cout << "РРґС‘Рј РІР»РµРІРѕ, С‚РµРєСѓС‰РёР№ РєРѕРґ: " << curr << endl;
 				}
 				else {
 					p = p->r_br;
 					if (encoded_str.length() < 160)
-						cout << "Идём вправо, текущий код: " << curr << endl;
+						cout << "РРґС‘Рј РІРїСЂР°РІРѕ, С‚РµРєСѓС‰РёР№ РєРѕРґ: " << curr << endl;
 				}
 			}
 
 			if (encoded_str.length() < 160)
-				cout << "-> Декодирован символ: '" << p->data.symbol << "'" << endl;
+				cout << "-> Р”РµРєРѕРґРёСЂРѕРІР°РЅ СЃРёРјРІРѕР»: '" << p->data.symbol << "'" << endl;
 			decoded += p->data.symbol;
 			//cout << p->data.symbol << endl;
 		}
@@ -521,16 +521,16 @@ namespace proc {
 				if (curr[curr.length() - 1] == '0') {
 					p = p->l_br;
 					if (encoded_str.length() < 160)
-						cout << "Идём влево, текущий код: " << curr << endl;
+						cout << "РРґС‘Рј РІР»РµРІРѕ, С‚РµРєСѓС‰РёР№ РєРѕРґ: " << curr << endl;
 				}
 				else {
 					p = p->r_br;
 					if (encoded_str.length() < 160)
-						cout << "Идём вправо, текущий код: " << curr << endl;
+						cout << "РРґС‘Рј РІРїСЂР°РІРѕ, С‚РµРєСѓС‰РёР№ РєРѕРґ: " << curr << endl;
 				}
 			}
 			if (encoded_str.length() < 160)
-				cout << "-> Декодирован символ: '" << p->data.symbol << "'" << endl;
+				cout << "-> Р”РµРєРѕРґРёСЂРѕРІР°РЅ СЃРёРјРІРѕР»: '" << p->data.symbol << "'" << endl;
 			decoded += p->data.symbol;
 			//cout << p->data.symbol << endl;
 		}

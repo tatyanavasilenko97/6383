@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <string>
 #include "B_tree.h"
 #include "Queue.h"
@@ -9,21 +9,21 @@ using namespace std;
 namespace proc {
 	class My {
 	private:
-		struct node; //Дерево для Хаффмана
-		struct f_node; //Дерево для Шеннона-Фано
+		struct node; //Р”РµСЂРµРІРѕ РґР»СЏ РҐР°С„С„РјР°РЅР°
+		struct f_node; //Р”РµСЂРµРІРѕ РґР»СЏ РЁРµРЅРЅРѕРЅР°-Р¤Р°РЅРѕ
 	public:
-		void hman(string my_str); //Метод Хаффмана
-		void fano(string my_str); //Метод Шеннона-Фано
-		void print(b_node<node> * root, unsigned k, ofstream &fout); //Вывод дерева для метода Хаффмана
-		void print2(b_node<f_node> * root, f_node* mas, int *priority, string *symbol, int k, ofstream &fout); //Вывод дерева для метода Шеннона-Фано
-		void BuildTable(b_node<node> *root, map<string, string> &table, ofstream &fout); //Построение дерева для метода Хаффмана
-		void BuildTable2(b_node<f_node> *root, map<string, string> &table, ofstream &fout); //Построение дерева для метода Шеннона-Фано
-		int Share_to_Intervals(int L, int R, int p[], bool build); //Распределение по интервалам
-		void Fano_Shennon(int left, int right, b_node<f_node> *root, int prior[], string *symbol, map<char, int> &dictionary, bool build); //Кодирование по дереву
-		void Sort_Symb_Prior(string symbol[], int priority[], map<char, int> &dictionary); //Сортировка символов по частоте
-		string Final_Code(string str, map<string, string> &table); //Создание закодированного собщения
-		string One_Letter(string str, map<char, int> &dictionary, ofstream &fout); //Если в сообщении встречается всего один символ
-		string hman_decode(b_node<node> * b, string encoded_str); //Декодирование по методу Хаффмана
-		string fano_decode(b_node<f_node> * b, string encoded_str); //Декодирование по методу Шеннона-Фано
+		void hman(string my_str); //РњРµС‚РѕРґ РҐР°С„С„РјР°РЅР°
+		void fano(string my_str); //РњРµС‚РѕРґ РЁРµРЅРЅРѕРЅР°-Р¤Р°РЅРѕ
+		void print(b_node<node> * root, unsigned k, ofstream &fout); //Р’С‹РІРѕРґ РґРµСЂРµРІР° РґР»СЏ РјРµС‚РѕРґР° РҐР°С„С„РјР°РЅР°
+		void print2(b_node<f_node> * root, f_node* mas, int *priority, string *symbol, int k, ofstream &fout); //Р’С‹РІРѕРґ РґРµСЂРµРІР° РґР»СЏ РјРµС‚РѕРґР° РЁРµРЅРЅРѕРЅР°-Р¤Р°РЅРѕ
+		void BuildTable(b_node<node> *root, map<string, string> &table, ofstream &fout); //РџРѕСЃС‚СЂРѕРµРЅРёРµ РґРµСЂРµРІР° РґР»СЏ РјРµС‚РѕРґР° РҐР°С„С„РјР°РЅР°
+		void BuildTable2(b_node<f_node> *root, map<string, string> &table, ofstream &fout); //РџРѕСЃС‚СЂРѕРµРЅРёРµ РґРµСЂРµРІР° РґР»СЏ РјРµС‚РѕРґР° РЁРµРЅРЅРѕРЅР°-Р¤Р°РЅРѕ
+		int Share_to_Intervals(int L, int R, int p[], bool build); //Р Р°СЃРїСЂРµРґРµР»РµРЅРёРµ РїРѕ РёРЅС‚РµСЂРІР°Р»Р°Рј
+		void Fano_Shennon(int left, int right, b_node<f_node> *root, int prior[], string *symbol, map<char, int> &dictionary, bool build); //РљРѕРґРёСЂРѕРІР°РЅРёРµ РїРѕ РґРµСЂРµРІСѓ
+		void Sort_Symb_Prior(string symbol[], int priority[], map<char, int> &dictionary); //РЎРѕСЂС‚РёСЂРѕРІРєР° СЃРёРјРІРѕР»РѕРІ РїРѕ С‡Р°СЃС‚РѕС‚Рµ
+		string Final_Code(string str, map<string, string> &table); //РЎРѕР·РґР°РЅРёРµ Р·Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРіРѕ СЃРѕР±С‰РµРЅРёСЏ
+		string One_Letter(string str, map<char, int> &dictionary, ofstream &fout); //Р•СЃР»Рё РІ СЃРѕРѕР±С‰РµРЅРёРё РІСЃС‚СЂРµС‡Р°РµС‚СЃСЏ РІСЃРµРіРѕ РѕРґРёРЅ СЃРёРјРІРѕР»
+		string hman_decode(b_node<node> * b, string encoded_str); //Р”РµРєРѕРґРёСЂРѕРІР°РЅРёРµ РїРѕ РјРµС‚РѕРґСѓ РҐР°С„С„РјР°РЅР°
+		string fano_decode(b_node<f_node> * b, string encoded_str); //Р”РµРєРѕРґРёСЂРѕРІР°РЅРёРµ РїРѕ РјРµС‚РѕРґСѓ РЁРµРЅРЅРѕРЅР°-Р¤Р°РЅРѕ
 	};
 }

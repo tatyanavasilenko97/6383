@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 namespace bin_tree
 {
 	template <class T> struct b_node

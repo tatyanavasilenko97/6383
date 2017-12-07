@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #define ADD_MEM 256
 template <class T> class priority_queue
 {
