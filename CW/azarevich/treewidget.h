@@ -25,7 +25,6 @@ private:
     TreeView *view_;
     QLineEdit *lineEdit_;
     QPushButton *button_;
-    QLabel *code;
     QLabel *step;
 
     unsigned int stateIndex=0;
@@ -33,8 +32,6 @@ private:
 
 public slots:
     void insert();
-    void next();
-    void back();
 };
 
 #endif // TREEWIDGET_H
