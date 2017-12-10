@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <cstdlib>
 #include "lr3head.h"
 using namespace std;
@@ -71,7 +71,7 @@ namespace st_modul1
 		return (topOfStack == NULL);
 	}
 
-	void Stack::destroy(void)
+	Stack::~Stack(void)
 	{
 		while (topOfStack != NULL) {
 			pop();
