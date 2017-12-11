@@ -88,15 +88,6 @@ namespace binTree_modul
 				displayBT(Left(b), n + 1);
 		if (!isNull(Right(b)))
 				displayBT(Right(b), n + 1);
-	/*	if (b!=NULL) {
-			cout << ' ' << RootBT(b);
-			if(!isNull(Right(b))) {displayBT (Right(b),n+1);}
-			else cout << endl; // вниз
-			if(!isNull(Left(b))) {
-				for (int i=1;i<=n;i++) cout << "  "; // вправо
-				displayBT (Left(b),n+1);}
-		}*/
-	//	else {};
 	}
     //---------------------------------------
 	unInt hBT (binTree b)
@@ -132,19 +123,4 @@ namespace binTree_modul
 		return cnt;
 	}
     //---------------------------------------
-	/*int path_length(binTree b, base x)
-	{
-	   int cnt = 0;
-	   binTree p = b;
-	   while(p)
-       {
-           cnt++;
-           if (RootBT(p) > x)
-                p = Right(p);
-           else if (RootBT(p) < x) p = Left(p);
-           else return cnt;
-       }
-       return cnt;
-	}*/
-
 } // end of namespace h_list
