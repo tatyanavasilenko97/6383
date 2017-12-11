@@ -1,4 +1,12 @@
-﻿#include <iostream>
+/* Lr4
+-main.cpp
+-Gomonova Anastasia, group 6383
+-Var2 
+-Для заданного бинарного дерева b типа BT с произвольным типом элементов:
+-напечатать элементы из всех листьев дерева b;
+-подсчитать число узлов на заданном уровне n дерева b (корень считать узлом 1-го уровня);
+-*/﻿﻿
+#include <iostream>
 #include <fstream>
 #include <fstream>
 #include <cstdlib>
