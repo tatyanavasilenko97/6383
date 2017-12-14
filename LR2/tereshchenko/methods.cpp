@@ -160,48 +160,20 @@ bool isAtom(Unit* list)
 Unit* delete_x(Unit* list, base x) 
 {
 	if (isEmpty(list)) return nullptr;
-	while (isAtom(getHead(list)))
+	if (isAtom(list))
 	{ 
-		if (getAtom(getHead(list)) != x) break;
+		if (getAtom(list) != x) return list;
 		else
 		{
-			Unit *ptr = list;
-			list = list->val.pair.tail;
-			delete ptr;
+			delete list;
+			return nullptr;
 		}
 	}
-	if (list == nullptr) return list;
-	Unit* A = getHead(list);
-	Unit* B = getTail(list);
-	delete_x_deep(&A, &list, x, Head);
-	delete_x_deep(&B, &list, x, Tail);
-	return list;
-}
 
-void delete_x_deep(Unit** list, Unit** reserv_list, base x, Head_Tail y) 
-{
-	if (isEmpty(*list)) return;
-	if (!isAtom(*list))
-	{
-		while (isAtom(getHead(*list)))
-		{
-			if ((getAtom(getHead(*list)) == x))
-			{
-				if (y == Head)	(*reserv_list)->val.pair.head = (*list)->val.pair.tail;
-				if (y == Tail)	(*reserv_list)->val.pair.tail = (*list)->val.pair.tail;
-				Unit* ptr = (*list);
-				(*list) = (*list)->val.pair.tail;
-				delete ptr;
-			}
-			else break;
-		}
-		if ((*list) == nullptr)	return;
-		Unit* A = getHead(*list);
-		Unit* B = getTail(*list);
-		delete_x_deep(&A, &(*list), x, Head);
-		delete_x_deep(&B, &(*list), x, Tail);
-	}
-	return;
+	list->val.pair.head = delete_x(getHead(list), x);
+	list->val.pair.tail = delete_x(getTail(list), x);
+
+	return ((getHead(list) == nullptr) ? getTail(list) : list);
 }
 
 //разрушаем список

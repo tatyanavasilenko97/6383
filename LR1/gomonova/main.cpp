@@ -1,24 +1,20 @@
-/* Lr1
-main.cpp
-Gomonova Anastasia, group 6383
-Var15
-Построить синтаксический анализатор для понятия скобки.
-скобки::=А | A ( ряд_скобок )
-ряд_скобок::= скобки | скобки ; ряд_скобок*/
-
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 
 using namespace std;
 void ERROR(int k, ofstream &writeF);
-bool RowBrackets(ofstream &writeF);
-bool Brackets(ofstream &writeF);
-char mas[100]; int iterat = -1;
-int cunt = -1;
+bool row_brackets(ofstream &writeF, int &iterat, int &cunt, char *mas);
+bool brackets(ofstream &writeF, int &cunt, int &iterat, char *mas);
+
+const int SIZE_OF_MAS = 100;
 
 
 int main()
 {
+	char *mas = new char [SIZE_OF_MAS];
+
+	int iterat = -1;
+	int cunt = -1;
 
 	ifstream readF;
 	readF.open("input.txt");
@@ -37,6 +33,11 @@ int main()
 	while (!readF.eof()) //Считывание условия с файла в массив
 	{
 		i++;
+		if (i >= SIZE_OF_MAS)
+		{
+			cout << "ERROR: OVERFLOW" << endl;
+			break;
+		}
 		readF >> mas[i];
 	}
 	if (i == 0)
@@ -60,7 +61,7 @@ int main()
 	bool b;
 	if (!Err_LIsh)
 	{
-		b = Brackets(writeF);
+		b = brackets(writeF, cunt, iterat, mas);
 		if (iterat + 1 != i) b = false;
 		if (b) { writeF << endl << "This is brackets" << endl << endl; cout << endl << "This is brackets"; }
 		else { writeF << endl << "This is not brackets" << endl << endl; cout << endl << "This is not brackets"; }
@@ -112,14 +113,14 @@ void ERROR(int k, ofstream &writeF) //Функция ошибок
 	}
 }
 
-bool RowBrackets(ofstream &writeF) //ряд_скобок::= скобки | скобки;ряд_скобок
+bool row_brackets(ofstream &writeF, int &iterat, int &cunt, char *mas) //ряд_скобок::= скобки | скобки;ряд_скобок
 {
 	bool k;
 	cout << "  |";
 	for (int z = 1; z < cunt; z++) cout << " ";
 	cout << " Check Brackets" << endl;
 
-	k = Brackets(writeF); //ряд_скобок::= скобки
+	k = brackets(writeF, cunt, iterat, mas); //ряд_скобок::= скобки
 	if (k)
 	{
 		if (mas[iterat + 1] == '?' || mas[iterat + 1] == ')')
@@ -142,7 +143,7 @@ bool RowBrackets(ofstream &writeF) //ряд_скобок::= скобки | ск�
 				for (int z = 1; z < cunt; z++) cout << " ";
 				cout << "Check Row Brackets" << endl;
 
-				k = RowBrackets(writeF);
+				k = row_brackets(writeF, cunt, iterat, mas);
 				if (k)
 				{
 					cunt--;
@@ -163,8 +164,9 @@ bool RowBrackets(ofstream &writeF) //ряд_скобок::= скобки | ск�
 	return false;
 }
 
-bool Brackets(ofstream &writeF) //скобки::= А | А(ряд_скобок)
+bool brackets(ofstream &writeF, int &cunt, int &iterat, char *mas) //скобки::= А | А(ряд_скобок)
 {
+
 	bool k;
 	iterat++;
 	cunt++;
@@ -190,7 +192,7 @@ bool Brackets(ofstream &writeF) //скобки::= А | А(ряд_скобок)
 				for (int z = 1; z < cunt; z++) cout << " ";
 				cout << "Check Row Brackets" << endl;
 
-				k = RowBrackets(writeF);
+				k = row_brackets(writeF, cunt, iterat, mas);
 				if (k)
 				{
 					iterat++;

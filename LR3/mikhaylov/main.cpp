@@ -5,7 +5,8 @@
 #include "St_class.h"
 using namespace std;
 
-void result(ifstream& fin, Stack<int> s) {
+void result(ifstream& fin) {
+	Stack<int> s;
 	char a[100];
 	int n1 = 100;
 	int n = 0;
@@ -47,10 +48,8 @@ int main() {
 	ifstream fin("prefix.txt");
 	fin >> noskipws;	
 	if (!fin) { cout << "File not open for reading!\n"; return 1; }
-	Stack<int> s;
-	result(fin, s);
-
-	s.~Stack();
+	result(fin);
+		
 	system("pause");
 	return (0);
 }

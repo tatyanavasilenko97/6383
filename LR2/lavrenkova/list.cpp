@@ -1,4 +1,5 @@
-﻿#include "lisp_list.h"
+﻿#include "lisp.h"
+#include "list.h"
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
@@ -18,6 +19,19 @@ void create_list(const lisp x, int & n, elem& h, elem& ah) {
 		ah = ah->next;
 		ah->atom = x->node.atom;
 	}
+}
+
+void output(elem &b, ofstream &outfile)
+{
+	if (b != NULL)
+		while (b != NULL)
+		{
+			outfile << b->atom << " ";
+			cout << b->atom << " ";
+			b = b->next;
+		}
+	else
+		cout << "()" << endl;
 }
 
 void destroy_lin(elem b)

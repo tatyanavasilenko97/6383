@@ -37,7 +37,6 @@ namespace binTree_modul
     unInt sizeBT (binTree b);
     void printKLP (binTree b);
     int count(binTree b, base x);
-    int path_length(binTree b, base x);
 } // end of namespace binTree_modul
 
 #endif // BTREE_H_INCLUDED

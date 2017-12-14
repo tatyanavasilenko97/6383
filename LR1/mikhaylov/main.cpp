@@ -7,84 +7,35 @@ using namespace std;
 /**
 *     скобки: A | (B скобки скобки)
 */
-bool _bracketsBegin(std::istream& in);
-bool _bracketsCont(std::istream& in);
+//------------------------------
+bool braket_(std::istream& in){
 
-int check = 0;
-
-bool _bracketsEnd(std::istream& in) {
-
-	while (true) {
-		switch (in.peek()) {
-		case '(':
-			in.get();
-			if (!_bracketsCont(in)) return false;
-			return true;
-			break;
-		case 'A':
-			check = -1;
-			in.get();
-			if (!_bracketsBegin(in)) return false;
-			return true;
-			break;
-		default:
-			return false;
-			break;
-		}
-	}
-}
-
-bool _bracketsCont(std::istream& in) {
-
-	while (true) {
-		switch (in.peek()) {
-		case 'B':
-			check = -1;
-			in.get();
-			if (!_bracketsEnd(in)) return false;
-			return true;
-			break;
-		default:
-			return false;
-			break;
-		}
-	}
-}
-
-bool _bracketsBegin(std::istream& in) {
-	
-	while (true) {
-		switch (in.peek()) {
-		case '(':
-			in.get();
-			if (!_bracketsCont(in)) return false;
-			return true;
-			break;
-		case ')':
-			in.get();
-			if (in.peek() == ')') return false;
-			if (!_bracketsBegin(in)) return true;
-			break;
+	switch (in.peek()) {
 		case 'A':
 			in.get();
-			
-			if (in.peek() != 'A'&& check == 0) return false;
-			if (!_bracketsBegin(in)) return true;
 			return true;
+			break;
+		case '(':
+			in.get();
+			if (in.peek() == 'B') 
+			in.get();
+			if (!(braket_(in) && braket_(in))) 
+				return false;
+			if (in.peek() == ')') 
+				return true;			
+			return false;
 			break;
 		default:
 			return false;
-			break;
-		}
 	}
-	return true;
+	return false;
 }
 
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	cout << "Введите комбинацию символов:" << endl;
-	if (_bracketsBegin(cin)) {
+	if (braket_(cin)) {
 		cout << "Это скобка!" << endl;
 	}
 	else cout << "Это не скобка!" << endl;

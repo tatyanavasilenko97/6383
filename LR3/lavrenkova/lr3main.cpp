@@ -63,8 +63,6 @@ int main() {
 	}
 	cout << "Результат = " << s.pop2() << endl;
 
-	s.~Stack();
-
 	system("Pause");
 	return 0;
 }
