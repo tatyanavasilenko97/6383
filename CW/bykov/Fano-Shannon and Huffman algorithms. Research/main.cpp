@@ -46,7 +46,7 @@ int main()
     _decode_huff = decode(ct_huff, _encode_huff);
     auto end_dec_huff = std::chrono::high_resolution_clock::now();
     std::cout << "Algorithm speed (in nanoseconds):" << std::endl;
-  //  std::cout << "Encoding sh_f: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end_enc_shf - begin_enc_shf).count() << std::endl;
+    std::cout << "Encoding sh_f: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end_enc_shf - begin_enc_shf).count() << std::endl;
     std::cout << "Decoding sh_f: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end_dec_shf - begin_dec_shf).count() << std::endl;
     std::cout << "Encoding huff: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end_enc_huff - begin_enc_huff).count() << std::endl;
     std::cout << "Decoding huff: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end_dec_huff - begin_dec_huff).count() << std::endl;
