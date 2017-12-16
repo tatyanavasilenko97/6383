@@ -15,7 +15,9 @@ bool term(std::istream& in, int& res) {
 		if (in.peek() == '*') {
 			in.get();
 			if (!num(in, vel))return false;
-			if ((vel != 0) && (val > (INT_MAX / vel))) return false;
+			if ((vel != 0) && (val > (INT_MAX / vel))) {
+				cout << "Переполнение при умножении";
+				return false;
 			val *= vel;
 		}
 		else {
@@ -33,13 +35,19 @@ bool exp(std::istream& in, int& res) {
 	if (in.peek() == '+') {
 		in.get();
 		if (!term(in, val))return false;
-		if (res > (INT_MAX - val))return false;
+		if (res > (INT_MAX - val)){
+			cout << "Переполнение при сложении";
+			return false;
+		}
 		res += val;
 	}
 	else if (in.peek() == '-') {
 		in.get();
 		if (!term(in, val))return false;
-		if (res < (INT_MIN + val)) return false;
+		if (res < (INT_MIN + val)){
+			cout << "Переполнение при вычитании";
+			return false;
+		}
 		res -= val;
 	}
 	else return true;
@@ -49,9 +57,8 @@ bool exp(std::istream& in, int& res) {
 int main()
 {
 	int res = 0;
-	if (exp(cin, res))
-		cout << res << endl;
-	else cout << "Error!" << endl;
+	exp(cin, res);
+	cout << res << endl;
 
 	system("pause > nul");
 	return 0;
