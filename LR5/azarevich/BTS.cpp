@@ -18,31 +18,21 @@ BTS::~BTS()
 }
 
 
-void Q(int n)
-{
-	for(int i=1; i<=n; i++)
-		cout <<"   ";
-	cout << "_";
-}
-
-
 void BTS::Display(int n)
 {
-	Q(n);
-
-	cout << key << endl;
-	
-	if( left != NULL )
-		left->Display(n+1);
-	else 
-		if ( right != NULL )
-		{
-			Q(n+1);
-			cout << endl;
-		}
-	
-	if( right != NULL  )
+	cout << ' ' << key;
+	if( !(right == NULL ) ) 
 		right->Display(n+1);
+	else 
+		cout << endl; // вниз
+
+	if( !(left == NULL) ) 
+	{
+		for (int i=1;i<=n;i++) 
+			cout << "  "; // вправо
+
+		left->Display(n+1); 
+	}
 }
 
 

@@ -3,8 +3,9 @@
 
 using namespace std;
 void ERROR(int k, ofstream &writeF);
-bool row_brackets(ofstream &writeF, int &iterat, int &cunt, char *mas);
-bool brackets(ofstream &writeF, int &cunt, int &iterat, char *mas);
+bool brackets(ofstream &writeF, int &count, int &iterat, char *mas);
+bool row_brackets(ofstream &writeF, int &count, int &iterat,  char *mas);
+
 
 const int SIZE_OF_MAS = 100;
 
@@ -14,7 +15,7 @@ int main()
 	char *mas = new char [SIZE_OF_MAS];
 
 	int iterat = -1;
-	int cunt = -1;
+	int count = -1;
 
 	ifstream readF;
 	readF.open("input.txt");
@@ -61,10 +62,10 @@ int main()
 	bool b;
 	if (!Err_LIsh)
 	{
-		b = brackets(writeF, cunt, iterat, mas);
+		b = brackets(writeF, count, iterat, mas);
 		if (iterat + 1 != i) b = false;
-		if (b) { writeF << endl << "This is brackets" << endl << endl; cout << endl << "This is brackets"; }
-		else { writeF << endl << "This is not brackets" << endl << endl; cout << endl << "This is not brackets"; }
+		if (b) { writeF << endl << "This is brackets" << endl << endl; cout << endl << "This is brackets" << endl; }
+		else { writeF << endl << "This is not brackets" << endl << endl; cout << endl << "This is not brackets" << endl; }
 	}
 
 	writeF.close();
@@ -113,21 +114,21 @@ void ERROR(int k, ofstream &writeF) //Функция ошибок
 	}
 }
 
-bool row_brackets(ofstream &writeF, int &iterat, int &cunt, char *mas) //ряд_скобок::= скобки | скобки;ряд_скобок
+bool row_brackets(ofstream &writeF, int &iterat, int &count, char *mas) //ряд_скобок::= скобки | скобки;ряд_скобок
 {
 	bool k;
 	cout << "  |";
-	for (int z = 1; z < cunt; z++) cout << " ";
+	for (int z = 1; z < count; z++) cout << " ";
 	cout << " Check Brackets" << endl;
 
-	k = brackets(writeF, cunt, iterat, mas); //ряд_скобок::= скобки
+	k = brackets(writeF, count, iterat, mas); //ряд_скобок::= скобки
 	if (k)
 	{
 		if (mas[iterat + 1] == '?' || mas[iterat + 1] == ')')
 		{
-			cunt--;
+			count--;
 			cout << "  |";
-			for (int z = 1; z < cunt; z++) cout << " ";
+			for (int z = 1; z < count; z++) cout << " ";
 			cout << "true1" << endl;
 
 			return true;
@@ -135,20 +136,20 @@ bool row_brackets(ofstream &writeF, int &iterat, int &cunt, char *mas) //ряд_
 		else
 		{
 			iterat++;
-			cunt++;
+			count++;
 			cout << mas[iterat];
 			if (mas[iterat] == ';')    //ряд_скобок::= скобки;ряд_скобок
 			{
 				cout << " |";
-				for (int z = 1; z < cunt; z++) cout << " ";
+				for (int z = 1; z < count; z++) cout << " ";
 				cout << "Check Row Brackets" << endl;
 
-				k = row_brackets(writeF, cunt, iterat, mas);
+				k = row_brackets(writeF, count, iterat, mas);
 				if (k)
 				{
-					cunt--;
+					count--;
 					cout << "  |";
-					for (int z = 1; z < cunt; z++) cout << " ";
+					for (int z = 1; z < count; z++) cout << " ";
 					cout << "true2" << endl;
 
 					return true;
@@ -164,39 +165,39 @@ bool row_brackets(ofstream &writeF, int &iterat, int &cunt, char *mas) //ряд_
 	return false;
 }
 
-bool brackets(ofstream &writeF, int &cunt, int &iterat, char *mas) //скобки::= А | А(ряд_скобок)
+bool brackets(ofstream &writeF, int &count, int &iterat, char *mas) //скобки::= А | А(ряд_скобок)
 {
 
 	bool k;
 	iterat++;
-	cunt++;
+	count++;
 	cout << mas[iterat];
 	if (mas[iterat] == 'A')  //скобки::= A
 	{
 		if (mas[iterat + 1] == '?' || mas[iterat + 1] == ';' || mas[iterat + 1] == ')')
 		{
-			cunt--;
+			count--;
 			cout << " |";
-			for (int z = 1; z < cunt; z++) cout << " ";
+			for (int z = 1; z < count; z++) cout << " ";
 			cout << "true3" << endl;
 			return true;
 		}
 		else
 		{
 			iterat++;
-			cunt++;
+			count++;
 			cout << mas[iterat];
 			if (mas[iterat] == '(')  //скобки::= A(ряд_скобок)
 			{
 				cout << "|";
-				for (int z = 1; z < cunt; z++) cout << " ";
+				for (int z = 1; z < count; z++) cout << " ";
 				cout << "Check Row Brackets" << endl;
 
-				k = row_brackets(writeF, cunt, iterat, mas);
+				k = row_brackets(writeF, count, iterat, mas);
 				if (k)
 				{
 					iterat++;
-					cunt++;
+					count++;
 					cout << mas[iterat];
 					if (mas[iterat] == '?')
 					{
@@ -205,9 +206,9 @@ bool brackets(ofstream &writeF, int &cunt, int &iterat, char *mas) //скобк�
 					}
 					if (mas[iterat] = ')')
 					{
-						cunt--;
+						count--;
 						cout << " |";
-						for (int z = 1; z < cunt; z++) cout << " ";
+						for (int z = 1; z < count; z++) cout << " ";
 						cout << "true4" << endl;
 
 						return true;

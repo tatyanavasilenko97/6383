@@ -1,4 +1,4 @@
-ï»¿#include <iostream>
+#include <iostream>
 #include <string>
 #include <clocale>
 using namespace std;
@@ -14,10 +14,10 @@ void ERROR(int a) {
 	ERR = true;
 	switch (a)
 	{
-	case 1: cout << endl << "Ð›Ð¸ÑˆÐ½Ð¸Ðµ ÑÐ¸Ð¼Ð²Ð¾Ð»Ñ‹" << endl;		break;
-	case 3: cout << endl << "ÐÐµ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ð° ÑÐºÐ¾Ð±ÐºÐ° Ð´Ð»Ñ NOT" << endl;		break;
-	case 4: cout << endl << "ÐÐµ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ð° ÑÐºÐ¾Ð±ÐºÐ° Ð´Ð»Ñ AND" << endl;		break;
-	case 5: cout << endl << "ÐÐµ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ð° ÑÐºÐ¾Ð±ÐºÐ° Ð´Ð»Ñ OR" << endl;		break;
+	case 1: cout << endl << "Ëèøíèå ñèìâîëû" << endl;		break;
+	case 3: cout << endl << "Íå çàêðûòà ñêîáêà äëÿ NOT" << endl;		break;
+	case 4: cout << endl << "Íå çàêðûòà ñêîáêà äëÿ AND" << endl;		break;
+	case 5: cout << endl << "Íå çàêðûòà ñêîáêà äëÿ OR" << endl;		break;
 	default: break;
 	}
 
@@ -83,10 +83,10 @@ int main() {
 	setlocale(LC_ALL, "Russian");
 	cout << "        (     TRUE     FALSE     NOT()     OR()      AND()     )" << endl;
 	cout << "------------------------------------------------------------------------------" << endl;
-	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð»Ð¾Ð³Ð¸Ñ‡ÐµÑÐºÐºÐ¾Ðµ Ð²Ñ‹Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ: ";
+	cout << "Ââåäèòå ëîãè÷åñêêîå âûðàæåíèå: ";
 
 	cin >> lgcFrml;
-	cout << "Ð’Ð°ÑˆÐµ Ð²Ñ‹Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ: " << lgcFrml;
+	cout << "Âàøå âûðàæåíèå: " << lgcFrml;
 	
 	if (logic()) { if (!ERR) cout << "  ===  TRUE"; }
 	else if (!ERR) cout << "  ===  FALSE";
