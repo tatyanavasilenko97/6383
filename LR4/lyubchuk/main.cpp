@@ -24,11 +24,11 @@ binTree enterBT();
 
 void displayBT(binTree b, int n);
 
-int getMaxDepth(binTree b, int depth = 1);
+int getMaxDepth(binTree b, int depth);
+ifstream infile("input.txt");
 
 
 
-ifstream infile("/Users/denislubchyk/Documents/studies/lab4/lab4/input.txt");
 
 int main()
 
@@ -55,7 +55,7 @@ int main()
         
         cout << "\nВычисление высоты дерева: " << endl;
         
-        int a = getMaxDepth(b) - 1;
+        int a = getMaxDepth(b,1) - 1;
         
         cout << "Высота дерева = " << a << "\n\n";
         
@@ -63,7 +63,7 @@ int main()
         
     }
     
-//    _getch();
+    _getch();
     
 }
 
@@ -93,7 +93,6 @@ binTree enterBT()
     }
     
 }
-int depth = 1;
 
 int getMaxDepth(binTree q, int depth)//находит глубину дерева
 
