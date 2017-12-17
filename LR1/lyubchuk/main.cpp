@@ -11,7 +11,7 @@ int main() {
     FILE *fp; FILE *f;  char br[10000];
     
     //Считываем данные с клавиатуры и записываем в файл input для дальнейшего использования
-    fp = fopen("/Users/denislubchyk/Documents/studies/lab_1/input.txt", "w"); //открыли файл ввода, чтобы переписать туда данные с консоли
+    fp = fopen("input.txt", "w"); //открыли файл ввода, чтобы переписать туда данные с консоли
     printf("Enter data:\n");
     scanf("%s", br);
     fputs(br, fp);
