@@ -1,0 +1,1 @@
+NOT (NOT NOT ((A OR B) AND NOT K) OR X)
