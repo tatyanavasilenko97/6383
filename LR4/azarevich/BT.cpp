@@ -35,10 +35,10 @@ void BT::Enter(std::ifstream &in)
 BT::~BT()
 {
 	if( !isNull(left) )
-		left->~BT();
+		delete left;
 
 	if( !isNull(right) )
-		right->~BT();
+		delete right;
 }
 
 bool BT::isNull(BT *t)
@@ -49,16 +49,19 @@ bool BT::isNull(BT *t)
 
 void BT::Display(int n)
 {
-	for(int i=1; i<=n; i++)
-		std::cout <<" ";
-
-	std::cout << "-" << cell << std::endl;
-	
-	if( !isNull(left) )
-		left->Display(n+1);
-	
-	if( !isNull(right) )
+	std::cout << ' ' << cell;
+	if( !(right == NULL ) ) 
 		right->Display(n+1);
+	else 
+		std::cout << std::endl; // вниз
+
+	if( !(left == NULL) ) 
+	{
+		for (int i=1;i<=n;i++) 
+			std::cout << "  "; // вправо
+
+		left->Display(n+1); 
+	}
 }
 
 
