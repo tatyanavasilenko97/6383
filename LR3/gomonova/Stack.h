@@ -5,28 +5,28 @@ class Stack
 {
 public:
 	char arr[size_1];
-	int work[2];
+	int start, top;
 	void init()
 	{
 		for (int i = 0; i < size_1; i++)
 			arr[i] = 0;
-		work[0] = -1;
-		work[1] = -1;
+		top = -1;
+		start = -1;
 	}
 	void push(char a)
 	{
-		if (work[1] != size_1 - 1)
+		if (start != size_1 - 1)
 		{
-			if (work[0] == -1)
+			if (top == -1)
 			{
 				arr[0] = a;
-				work[1] = 0;
-				work[0] = 0;
+				start = 0;
+				top = 0;
 			}
 			else
 			{
-				arr[work[0] + 1] = a;
-				work[0]++;
+				arr[top + 1] = a;
+				top++;
 			}
 		}
 		else
@@ -34,28 +34,28 @@ public:
 	}
 	bool can_pop()
 	{
-		if (work[0] != -1)
+		if (top != -1)
 			return 1;
 		else
 			return 0;
 	}
 	char pop()
 	{
-		if (work[0] != -1)
+		if (top != -1)
 		{
-			if (work[0] != work[1])
+			if (top != start)
 			{
-				char tmp = arr[work[0]];
-				arr[work[0]] = 0;
-				work[0]--;
+				char tmp = arr[top];
+				arr[top] = 0;
+				top--;
 				return tmp;
 			}
 			else
 			{
-				char tmp = arr[work[0]];
-				arr[work[0]] = 0;
-				work[0] = -1;
-				work[1] = -1;
+				char tmp = arr[top];
+				arr[top] = 0;
+				top = -1;
+				start = -1;
 				return tmp;
 			}
 		}
@@ -70,5 +70,3 @@ public:
 		init();
 	}
 };
-
-
