@@ -9,7 +9,7 @@ using namespace std::chrono;
 
 int main()
 {
-    CodeTree* ct_shf;// = nullptr;
+    CodeTree* ct_shf;
     CodeTree* ct_huff;
     char *c;
     std::ifstream fin("input.dat");
@@ -45,13 +45,11 @@ int main()
     auto begin_dec_huff = std::chrono::high_resolution_clock::now();
     _decode_huff = decode(ct_huff, _encode_huff);
     auto end_dec_huff = std::chrono::high_resolution_clock::now();
-    std::cout << "Algorithm speed (in nanoseconds):" << std::endl;
-    std::cout << "Encoding sh_f: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end_enc_shf - begin_enc_shf).count() << std::endl;
-    std::cout << "Decoding sh_f: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end_dec_shf - begin_dec_shf).count() << std::endl;
-    std::cout << "Encoding huff: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end_enc_huff - begin_enc_huff).count() << std::endl;
-    std::cout << "Decoding huff: " << std::chrono::duration_cast<std::chrono::nanoseconds>(end_dec_huff - begin_dec_huff).count() << std::endl;
-    //std::cout << "Tree:\n";
-    //print_tree(ct_shf, 0, std::cout);
+    std::cout << "Algorithm speed (in microseconds):" << std::endl;
+    std::cout << "Encoding sh_f: " << std::chrono::duration_cast<std::chrono::microseconds>(end_enc_shf - begin_enc_shf).count() << std::endl;
+    std::cout << "Decoding sh_f: " << std::chrono::duration_cast<std::chrono::microseconds>(end_dec_shf - begin_dec_shf).count() << std::endl;
+    std::cout << "Encoding huff: " << std::chrono::duration_cast<std::chrono::microseconds>(end_enc_huff - begin_enc_huff).count() << std::endl;
+    std::cout << "Decoding huff: " << std::chrono::duration_cast<std::chrono::microseconds>(end_dec_huff - begin_dec_huff).count() << std::endl;
     fout_encode_shannon_fano << _encode_shf << std::endl;
     fout_decode_shannon_fano << _decode_shf << std::endl;
     fout_encode_huffman << _encode_huff << std::endl;
