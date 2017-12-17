@@ -57,13 +57,16 @@ bool Continous()
 	cout << "Завершить? (Y/N)\n";
 	char c;
 
-	cin >> c;
-
-	switch(c)
+	while (true)
 	{
-		case 'Y': return false;
-		case 'N': return true;
-		default: goto begin;
+		cin >> c;
+
+		switch(c)
+		{
+			case 'Y': return false;
+			case 'N': return true;
+			default: break;
+		}
 	}
 }
 
