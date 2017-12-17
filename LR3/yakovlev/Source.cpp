@@ -1,44 +1,14 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
-#include <set>
-#include <algorithm>
-#include <stdlib.h>
-
-using namespace std;
-
-struct Node {
-
-	int atom; 
-	Node* nextEl;
-	Node() {
-		this->atom = 0;
-		this->nextEl = NULL;
-	}
-	
-};
+﻿#include "st.h"
 
 
-
-int strToInt(string);
-string intToStr(int);
-bool isNumber(string);
-void readExp(vector<string>*);
-int culcFunc(Node*, vector<string>, set<string>);
-void writeCulcExp(int result);
-void printMenu();
-void push_Number(Node*& varList, string nowEl);
-int pop_Ele(Node*& varList, Node* head);
 
 int main()
 {
 
 
 	vector <string> exp;
-	Node* head = new Node;
-	Node* varList = new Node;
+	St head;
+	St varList;
 	set<string> oper;
 	int result;
 	oper.insert("+");
@@ -66,25 +36,6 @@ int main()
 
 }
 
-void push_Number(Node*& varList, string nowEl) {
-	varList->nextEl = new Node;
-	varList->nextEl->atom = strToInt(nowEl);
-	varList = varList->nextEl;
-	return;
-}
-
-int pop_Ele(Node*& varList, Node* head)
-{
-	int flag = varList->atom;
-	varList = head;
-
-	while (varList->nextEl->nextEl != NULL)
-		varList = varList->nextEl;
-
-	delete varList->nextEl;
-	varList->nextEl = NULL;
-	return flag;
-}
 
 void writeCulcExp(int result) {
 	ofstream cout("output.txt");
@@ -103,56 +54,56 @@ void readExp(vector<string>*exp) {
 
 
 
-int culcFunc(Node*varList, vector<string>exp, set<string>oper) {
-	Node* head = varList;
+int culcFunc(St varList, vector<string>exp, set<string>oper) {
+	St head = varList;
 	int i = 1;
 	int flag = 0;
 	int result = 0;
 	for (string nowEl : exp) {
 
-		if (isNumber(nowEl)) {
-			push_Number(varList, nowEl);
-			cout << i << ") " << varList->atom << ";" << endl;
+		if (isNumber(nowEl)){
+			varList.push_Number(nowEl); 
+			cout << i << ") " << varList.pointer->atom << ";" << endl;
 		}
 		else
 			if (oper.count(nowEl)) {
 				switch (nowEl[0]) {
 
 				case '+': {
-					flag = pop_Ele(varList, head);
-					varList->atom += flag;
+					flag = varList.pop_Ele(varList, head);
+					varList.pointer->atom += flag;
 				}
 						  break;
 				case '-': {
-					flag = pop_Ele(varList, head);
-					varList->atom -= flag;
+					flag = varList.pop_Ele(varList, head);
+					varList.pointer->atom -= flag;
 				}
 						  break;
 				case '*': {
-					flag = pop_Ele(varList, head);
-					varList->atom *= flag;
+					flag = varList.pop_Ele(varList, head);
+					varList.pointer->atom *= flag;
 
 				}
 						  break;
 				case '/': {
 
-					if (varList->atom == 0) {
+					if (varList.pointer->atom == 0) {
 						cerr << "You use null at the division.";
 						exit(2);
 					}
-					flag = pop_Ele(varList, head);
-					varList->atom /= flag;
+					flag = varList.pop_Ele(varList, head);
+					varList.pointer->atom /= flag;
 				}
 						  break;
 				case '^': {
-					flag = pop_Ele(varList, head);
-					varList->atom = pow(varList->atom, flag);
+					flag = varList.pop_Ele(varList, head);
+					varList.pointer->atom = pow(varList.pointer->atom, flag);
 				}
 						  break;
 				default:
 					break;
 				}
-				cout << i << ") " << varList->atom << ";" << endl;
+				cout << i << ") " << varList.pointer->atom << ";" << endl;
 			}
 			else {
 				cerr << "Incorrect data!";
@@ -161,9 +112,9 @@ int culcFunc(Node*varList, vector<string>exp, set<string>oper) {
 			++i;
 	}
 
-	result = varList->atom;
-	delete head;
-	delete varList;
+	result = varList.pointer->atom;
+	//delete head;
+	//~varList;
 
 	return result;
 }
